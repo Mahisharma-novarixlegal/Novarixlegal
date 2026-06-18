@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Novarix Legal — Mahi Sharma</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Cormorant+Garamond:ital,wght@0,400;1,400;1,600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0a0a0a;
+  --off-black:#111;
+  --surface:#161616;
+  --surface2:#1e1e1e;
+  --rule:#2a2a2a;
+  --rule2:#333;
+  --red:#c0392b;
+  --red-lt:#e74c3c;
+  --white:#f0ede8;
+  --muted:#777;
+  --muted2:#555;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--white);line-height:1.6;font-size:16px;overflow-x:hidden}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 3rem;
+  border-bottom:1px solid var(--rule);
+  background:rgba(10,10,10,0.95);
+  backdrop-filter:blur(12px);
+}
+.nav-brand{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.4rem;
+  letter-spacing:0.12em;
+  color:var(--white);
+  text-decoration:none;
+}
+.nav-brand span{color:var(--red)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{
+  font-size:0.75rem;font-weight:500;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--red)}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-rows:1fr auto;
+  padding-top:5rem;
+  position:relative;
+  overflow:hidden;
+}
+.hero-bg-text{
+  position:absolute;
+  bottom:-2rem;right:-1rem;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(8rem,20vw,22rem);
+  color:rgba(255,255,255,0.025);
+  letter-spacing:-0.02em;
+  user-select:none;
+  line-height:1;
+  pointer-events:none;
+}
+.hero-main{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:6rem 3rem 3rem 4rem;
+  position:relative;z-index:1;
+}
+.hero-kicker{
+  display:flex;align-items:center;gap:0.8rem;
+  margin-bottom:2rem;
+}
+.hero-kicker-line{width:40px;height:1px;background:var(--red)}
+.hero-kicker span{
+  font-size:0.72rem;font-weight:500;
+  letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--red);
+}
+.hero-question{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3.5rem,9vw,9rem);
+  line-height:0.9;
+  letter-spacing:0.02em;
+  color:var(--white);
+  max-width:900px;
+}
+.hero-question .slash{color:var(--red)}
+.hero-sub{
+  margin-top:2.5rem;
+  font-size:1.05rem;
+  font-weight:300;
+  color:var(--muted);
+  max-width:560px;
+  line-height:1.75;
+  font-style:italic;
+  font-family:'Cormorant Garamond',serif;
+}
+.hero-sub strong{color:var(--white);font-style:normal;font-family:'DM Sans',sans-serif;font-weight:400}
+.hero-cta{display:flex;gap:1rem;margin-top:3rem;flex-wrap:wrap}
+.btn-red{
+  display:inline-block;padding:0.85rem 2.2rem;
+  background:var(--red);color:#fff;
+  font-size:0.78rem;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;
+  text-decoration:none;
+  transition:background 0.2s;
+  border:1px solid var(--red);
+}
+.btn-red:hover{background:var(--red-lt);border-color:var(--red-lt)}
+.btn-ghost{
+  display:inline-block;padding:0.85rem 2.2rem;
+  background:transparent;color:var(--white);
+  font-size:0.78rem;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;
+  text-decoration:none;
+  border:1px solid var(--rule2);
+  transition:border-color 0.2s,color 0.2s;
+}
+.btn-ghost:hover{border-color:var(--white)}
+.hero-ticker{
+  border-top:1px solid var(--rule);
+  padding:1.5rem 4rem;
+  display:flex;gap:4rem;
+  overflow:hidden;
+}
+.ticker-item{display:flex;align-items:center;gap:1rem;flex-shrink:0}
+.ticker-dot{width:4px;height:4px;background:var(--red);border-radius:50%}
+.ticker-item span{
+  font-size:0.75rem;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--muted);white-space:nowrap;
+}
+
+/* INTRO STRIP */
+.intro-strip{
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  padding:4rem;
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:4rem;
+  align-items:center;
+}
+.intro-label{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:3.5rem;
+  letter-spacing:0.06em;
+  color:var(--white);
+  line-height:1;
+}
+.intro-label span{color:var(--red)}
+.intro-body{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.45rem;
+  font-style:italic;
+  font-weight:400;
+  color:#bbb;
+  line-height:1.65;
+}
+.intro-body strong{
+  color:var(--white);
+  font-style:normal;
+  font-family:'DM Sans',sans-serif;
+  font-weight:400;
+  font-size:1rem;
+}
+
+/* PRACTICE */
+#practice{padding:5rem 4rem}
+.section-top{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:3rem;
+  border-bottom:1px solid var(--rule);
+  padding-bottom:1.5rem;
+}
+.section-eyebrow{
+  font-size:0.72rem;font-weight:500;
+  letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--red);margin-bottom:0.5rem;
+}
+.section-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.5rem,5vw,4.5rem);
+  letter-spacing:0.04em;
+  color:var(--white);
+  line-height:1;
+}
+.practice-list{display:flex;flex-direction:column}
+.practice-item{
+  display:grid;
+  grid-template-columns:80px 1fr auto;
+  align-items:start;
+  gap:2rem;
+  padding:2rem 0;
+  border-bottom:1px solid var(--rule);
+  transition:background 0.2s;
+  cursor:default;
+}
+.practice-item:hover .practice-name{color:var(--red)}
+.practice-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.1rem;
+  letter-spacing:0.08em;
+  color:var(--muted2);
+  padding-top:0.2rem;
+}
+.practice-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.8rem;
+  font-weight:400;
+  color:var(--white);
+  margin-bottom:0.5rem;
+  transition:color 0.2s;
+  line-height:1.1;
+}
+.practice-desc{
+  font-size:0.85rem;font-weight:300;
+  color:var(--muted);line-height:1.7;
+  max-width:600px;
+}
+.practice-tag{
+  font-size:0.68rem;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--red);
+  border:1px solid var(--red);
+  padding:0.3rem 0.7rem;
+  white-space:nowrap;
+  align-self:flex-start;
+  margin-top:0.4rem;
+}
+
+/* ABOUT */
+#about{
+  background:var(--surface);
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  padding:5rem 4rem;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5rem;
+}
+.about-left{}
+.about-right{display:flex;flex-direction:column;gap:2rem}
+.about-body p{
+  font-size:0.95rem;font-weight:300;
+  color:#aaa;line-height:1.9;
+  margin-bottom:1.2rem;
+}
+.about-body p strong{color:var(--white);font-weight:500}
+.about-stat-row{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:0;
+  border:1px solid var(--rule);
+  margin-top:2rem;
+}
+.about-stat{
+  padding:1.5rem;
+  border-right:1px solid var(--rule);
+}
+.about-stat:last-child{border-right:none}
+.about-stat-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.5rem;letter-spacing:0.04em;
+  color:var(--red);line-height:1;
+}
+.about-stat-label{
+  font-size:0.72rem;font-weight:400;
+  color:var(--muted);text-transform:uppercase;
+  letter-spacing:0.08em;margin-top:0.3rem;
+}
+.affiliation{
+  padding:1.2rem;
+  border:1px solid var(--rule);
+  background:var(--surface2);
+}
+.affiliation-name{
+  font-size:0.88rem;font-weight:500;
+  color:var(--white);margin-bottom:0.2rem;
+}
+.affiliation-role{
+  font-size:0.78rem;font-weight:300;
+  color:var(--muted);
+}
+
+/* INSIGHTS */
+#insights{padding:5rem 4rem}
+.insights-grid{
+  display:grid;
+  grid-template-columns:1.6fr 1fr;
+  gap:2px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  margin-top:3rem;
+}
+.insight-card{
+  background:var(--black);
+  padding:2.5rem 2rem;
+  transition:background 0.2s;
+}
+.insight-card:hover{background:var(--surface)}
+.insight-card.featured{
+  border-right:2px solid var(--red);
+}
+.insight-tag{
+  font-size:0.68rem;font-weight:500;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--red);margin-bottom:1rem;
+}
+.insight-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;font-weight:400;
+  color:var(--white);line-height:1.25;
+  margin-bottom:0.8rem;
+}
+.insight-card.featured .insight-title{font-size:2rem}
+.insight-body{
+  font-size:0.83rem;font-weight:300;
+  color:var(--muted);line-height:1.7;
+}
+.insight-meta{
+  margin-top:1.5rem;
+  font-size:0.72rem;
+  color:var(--muted2);
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+}
+.pill{
+  display:inline-block;
+  padding:0.2rem 0.6rem;
+  background:var(--surface2);
+  color:var(--muted);
+  font-size:0.68rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  margin-top:0.7rem;
+}
+.insights-secondary{display:flex;flex-direction:column;gap:2px}
+
+/* CONTACT */
+#contact{
+  background:var(--surface);
+  border-top:1px solid var(--rule);
+  padding:5rem 4rem;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5rem;
+}
+.contact-headline{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2rem,4vw,3.5rem);
+  letter-spacing:0.04em;
+  color:var(--white);
+  line-height:1;
+  margin-bottom:1.5rem;
+}
+.contact-sub{
+  font-size:0.9rem;font-weight:300;
+  color:var(--muted);line-height:1.75;
+  margin-bottom:2.5rem;
+}
+.contact-details{display:flex;flex-direction:column;gap:1.5rem}
+.contact-detail-item h4{
+  font-size:0.7rem;font-weight:500;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--red);margin-bottom:0.3rem;
+}
+.contact-detail-item p{
+  font-size:0.88rem;font-weight:300;
+  color:#aaa;line-height:1.6;
+}
+.form{display:flex;flex-direction:column;gap:1rem}
+.form-group{display:flex;flex-direction:column;gap:0.4rem}
+.form-group label{
+  font-size:0.7rem;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--muted);
+}
+.form-group input,
+.form-group textarea,
+.form-group select{
+  padding:0.85rem 1rem;
+  background:var(--surface2);
+  border:1px solid var(--rule2);
+  color:var(--white);
+  font-family:'DM Sans',sans-serif;
+  font-size:0.9rem;
+  outline:none;
+  transition:border-color 0.2s;
+  appearance:none;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{border-color:var(--red)}
+.form-group textarea{resize:vertical;min-height:110px}
+.form-group select option{background:var(--surface2);color:var(--white)}
+
+/* FOOTER */
+footer{
+  background:var(--off-black);
+  border-top:1px solid var(--rule);
+  padding:2rem 4rem;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.footer-brand{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.2rem;letter-spacing:0.12em;
+  color:var(--white);
+}
+.footer-brand span{color:var(--red)}
+footer p{font-size:0.75rem;color:var(--muted2)}
+.footer-links{display:flex;gap:1.8rem}
+.footer-links a{
+  font-size:0.72rem;color:var(--muted2);
+  text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;
+}
+.footer-links a:hover{color:var(--red)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{gap:1.2rem}
+  .hero-main{padding:6rem 1.5rem 2rem}
+  .hero-ticker{padding:1.2rem 1.5rem;gap:2rem}
+  .intro-strip{grid-template-columns:1fr;gap:1.5rem;padding:3rem 1.5rem}
+  #practice,#insights,#about,#contact{padding:4rem 1.5rem}
+  .section-top{flex-direction:column;align-items:flex-start;gap:1rem}
+  .practice-item{grid-template-columns:50px 1fr;gap:1rem}
+  .practice-tag{display:none}
+  #about,#contact{grid-template-columns:1fr;gap:3rem}
+  .about-stat-row{grid-template-columns:1fr 1fr}
+  .about-stat:nth-child(2){border-right:none}
+  .about-stat:nth-child(3){border-top:1px solid var(--rule)}
+  .insights-grid{grid-template-columns:1fr}
+  .insight-card.featured{border-right:none;border-bottom:2px solid var(--red)}
+  footer{flex-direction:column;gap:1.2rem;text-align:center;padding:2rem 1.5rem}
+  .footer-links{flex-wrap:wrap;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">NOVARIX<span>.</span>LEGAL</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#practice">Practice</a></li>
+    <li><a href="#insights">Insights</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-text">NX</div>
+  <div class="hero-main">
+    <div class="hero-kicker">
+      <div class="hero-kicker-line"></div>
+      <span>Novarix Legal &mdash; Delhi</span>
+    </div>
+    <h1 class="hero-question">
+      DO YOU KNOW<br/>
+      WHO TO CALL<br/>
+      WHEN IT<br/>
+      <span class="slash">ACTUALLY</span><br/>
+      MATTERS<span class="slash">?</span>
+    </h1>
+    <p class="hero-sub">
+      Copyright. Personality rights. Real estate. Criminal. Civil.<br/>
+      <strong>Full-spectrum legal practice.</strong> One person who knows how Delhi works — the courts, the system, the ground.
+    </p>
+    <div class="hero-cta">
+      <a href="#practice" class="btn-red">See Practice Areas</a>
+      <a href="#contact" class="btn-ghost">Talk to Mahi</a>
+    </div>
+  </div>
+  <div class="hero-ticker">
+    <div class="ticker-item"><div class="ticker-dot"></div><span>Delhi High Court</span></div>
+    <div class="ticker-item"><div class="ticker-dot"></div><span>Copyright Enforcement</span></div>
+    <div class="ticker-item"><div class="ticker-dot"></div><span>Personality Rights</span></div>
+    <div class="ticker-item"><div class="ticker-dot"></div><span>Real Estate Law</span></div>
+    <div class="ticker-item"><div class="ticker-dot"></div><span>Criminal Law</span></div>
+    <div class="ticker-item"><div class="ticker-dot"></div><span>Civil & Commercial</span></div>
+    <div class="ticker-item"><div class="ticker-dot"></div><span>Strategic Alliances</span></div>
+  </div>
+</section>
+
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <div class="intro-label">MAHI<br/>SHAR<span>-</span><br/>MA.</div>
+  <div class="intro-body">
+    Most lawyers know the law. <strong>Few know Delhi.</strong> The thana, the tehsil, the registrar's office, the courtroom — the full map of how things actually get done. That's the difference. That's Novarix.
+  </div>
+</div>
+
+<!-- PRACTICE -->
+<section id="practice">
+  <div class="section-top">
+    <div>
+      <p class="section-eyebrow">Practice Areas</p>
+      <h2 class="section-title">What I Do.</h2>
+    </div>
+    <a href="#contact" class="btn-ghost">Get in Touch</a>
+  </div>
+  <div class="practice-list">
+    <div class="practice-item">
+      <div class="practice-num">01 /</div>
+      <div>
+        <div class="practice-name">Copyright & IP Enforcement</div>
+        <div class="practice-desc">Legal counsel to CINEFIL Producers Performance Limited — a registered copyright society under the Copyright Act, 1957. Enforcement across hospitality, healthcare, retail, and broadcasting. Demand notices, Delhi HC injunctions, commercial suits.</div>
+      </div>
+      <div class="practice-tag">Active</div>
+    </div>
+    <div class="practice-item">
+      <div class="practice-num">02 /</div>
+      <div>
+        <div class="practice-name">Personality Rights & AI Law</div>
+        <div class="practice-desc">Protecting name, likeness, voice, and digital identity. Advisory and litigation for deepfakes, AI-generated replicas, and unauthorised commercial use of identity. India's fastest-growing legal frontier — and nobody owns it yet.</div>
+      </div>
+      <div class="practice-tag">Emerging</div>
+    </div>
+    <div class="practice-item">
+      <div class="practice-num">03 /</div>
+      <div>
+        <div class="practice-name">Real Estate & Property Law</div>
+        <div class="practice-desc">Strategic Legal Counsel & Alliance Partner for Altera Realty's Delhi NCR expansion. Luxury and premium developer advisory, PropTech legal structuring, title due diligence, and property disputes.</div>
+      </div>
+      <div class="practice-tag">Advisory</div>
+    </div>
+    <div class="practice-item">
+      <div class="practice-num">04 /</div>
+      <div>
+        <div class="practice-name">Criminal Law</div>
+        <div class="practice-desc">Ground-level criminal practice. Bail, anticipatory bail, FIR quashing, and trial representation. I know Delhi Police — how they work, how they think, and how to move within the system.</div>
+      </div>
+      <div class="practice-tag">Litigation</div>
+    </div>
+    <div class="practice-item">
+      <div class="practice-num">05 /</div>
+      <div>
+        <div class="practice-name">Civil & Commercial Litigation</div>
+        <div class="practice-desc">High Court litigation across injunctions, commercial disputes, recovery matters, and appellate work. Fast, precise, and built around getting results — not billing hours.</div>
+      </div>
+      <div class="practice-tag">Litigation</div>
+    </div>
+    <div class="practice-item">
+      <div class="practice-num">06 /</div>
+      <div>
+        <div class="practice-name">Consumer Protection</div>
+        <div class="practice-desc">Legal notices and representation against manufacturers and service providers. Product liability, service deficiency, unfair trade practices — holding large companies accountable.</div>
+      </div>
+      <div class="practice-tag">Advisory</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left">
+    <p class="section-eyebrow">About</p>
+    <h2 class="section-title" style="margin-bottom:2rem">The<br/>Lawyer.</h2>
+    <div class="about-body">
+      <p>I am Mahi Sharma — a Delhi-based advocate with a practice that doesn't fit in one box. <strong>Copyright enforcement. Personality rights. Real estate. Criminal. Civil.</strong> I built it this way deliberately.</p>
+      <p>Most lawyers specialise early and stay narrow. I went the other direction — because the clients who need you most rarely have problems that fit neatly into one category. A rights dispute becomes a criminal matter. A property deal surfaces a regulatory issue. You need someone who can move across all of it.</p>
+      <p>I work with <strong>Media-Lexicon</strong> (Advocate Vishnu T. Menon, Defence Colony) for litigation, serve as <strong>Director of Strategic Alliances & Legal Affairs for CINEFIL</strong>, and advise <strong>Altera Realty</strong> on their Delhi NCR expansion. Three very different mandates. One common thread — someone who knows how Delhi actually works.</p>
+    </div>
+    <div class="about-stat-row">
+      <div class="about-stat">
+        <div class="about-stat-num">DHC</div>
+        <div class="about-stat-label">Primary Court</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-num">6+</div>
+        <div class="about-stat-label">Practice Areas</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-num">NCR</div>
+        <div class="about-stat-label">Ground Coverage</div>
+      </div>
+    </div>
+  </div>
+  <div class="about-right">
+    <p class="section-eyebrow">Affiliations</p>
+    <div class="affiliation">
+      <div class="affiliation-name">CINEFIL Producers Performance Limited</div>
+      <div class="affiliation-role">Director, Strategic Alliances & Legal Affairs &mdash; Registered Copyright Society under the Copyright Act, 1957</div>
+    </div>
+    <div class="affiliation">
+      <div class="affiliation-name">Media-Lexicon, Defence Colony</div>
+      <div class="affiliation-role">Litigation Practice with Advocate Vishnu T. Menon &mdash; Delhi High Court</div>
+    </div>
+    <div class="affiliation">
+      <div class="affiliation-name">Altera Realty</div>
+      <div class="affiliation-role">Strategic Advisor & Alliance Partner, Delhi NCR &mdash; PropTech & Real Estate Legal Counsel</div>
+    </div>
+    <div style="margin-top:1rem;padding:2rem;border:1px solid var(--rule);border-left:3px solid var(--red)">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:#aaa;line-height:1.6">
+        "The law I practise was written for people who couldn't afford silence. I'm here to make sure they don't have to."
+      </p>
+      <p style="font-size:0.75rem;color:var(--muted2);margin-top:0.8rem;letter-spacing:0.08em;text-transform:uppercase">— Mahi Sharma</p>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section id="insights">
+  <div class="section-top">
+    <div>
+      <p class="section-eyebrow">Insights</p>
+      <h2 class="section-title">The Writing.</h2>
+    </div>
+    <a href="#contact" class="btn-ghost">Get Notified</a>
+  </div>
+  <div class="insights-grid">
+    <div class="insight-card featured">
+      <div class="insight-tag">Personality Rights &mdash; Featured</div>
+      <div class="insight-title">Anil Kapoor v. Simply Life India: The Order That Changed Everything About AI and Your Identity</div>
+      <div class="insight-body">Delhi HC didn't just protect a film star's face. It built the constitutional and tortious architecture for every person whose voice, likeness, or name could be cloned by a machine. Here's what the order actually says — and what it left wide open.</div>
+      <div class="insight-meta">Coming Soon &mdash; Personality Rights Series</div>
+    </div>
+    <div class="insights-secondary">
+      <div class="insight-card">
+        <div class="insight-tag">Copyright</div>
+        <div class="insight-title">Why Your Hotel is Breaking the Law Every Time Music Plays in the Lobby</div>
+        <div class="insight-body">The law on public performance is settled. Almost nobody complies. Here's why — and what changes when enforcement shows up.</div>
+        <span class="pill">Coming Soon</span>
+      </div>
+      <div class="insight-card">
+        <div class="insight-tag">AI & Law</div>
+        <div class="insight-title">Deepfakes and the Gap in Indian Statute: What Protects You Today</div>
+        <div class="insight-body">India has no Personality Rights Act. Here's the patchwork that exists — and where it breaks.</div>
+        <span class="pill">Coming Soon</span>
+      </div>
+      <div class="insight-card">
+        <div class="insight-tag">Criminal Law</div>
+        <div class="insight-title">What Actually Happens After an FIR — A Ground-Level Guide</div>
+        <div class="insight-body">Not the textbook version. What really happens in Delhi, step by step, from the thana to the court.</div>
+        <span class="pill">Coming Soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div>
+    <div class="contact-headline">Let's Talk About What You're Dealing With.</div>
+    <p class="contact-sub">No forms that go nowhere. No junior associate who picks up. You write — I read it and I respond. Every matter gets looked at seriously, regardless of size.</p>
+    <div class="contact-details">
+      <div class="contact-detail-item">
+        <h4>Location</h4>
+        <p>Delhi, India<br/>Available nationally. Primary practice before the Delhi High Court.</p>
+      </div>
+      <div class="contact-detail-item">
+        <h4>Response Time</h4>
+        <p>Within 48 hours. Urgent matters — say so in your message.</p>
+      </div>
+      <div class="contact-detail-item">
+        <h4>Practice Areas</h4>
+        <p>Copyright &bull; Personality Rights &bull; Real Estate &bull; Criminal &bull; Civil &bull; Consumer Protection</p>
+      </div>
+    </div>
+  </div>
+  <div class="form">
+    <div class="form-group">
+      <label>Your Name</label>
+      <input type="text" placeholder="Full name"/>
+    </div>
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" placeholder="your@email.com"/>
+    </div>
+    <div class="form-group">
+      <label>Phone (Optional)</label>
+      <input type="tel" placeholder="+91"/>
+    </div>
+    <div class="form-group">
+      <label>Matter Type</label>
+      <select>
+        <option value="">Select area</option>
+        <option>Copyright / IP Enforcement</option>
+        <option>Personality Rights / AI Law</option>
+        <option>Real Estate & Property</option>
+        <option>Criminal Matter</option>
+        <option>Civil / Commercial Litigation</option>
+        <option>Consumer Protection</option>
+        <option>Other / General Enquiry</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Tell Me What's Going On</label>
+      <textarea placeholder="Brief description of your matter. Everything shared here is treated as strictly confidential."></textarea>
+    </div>
+    <button class="btn-red" style="cursor:pointer;border:none;width:fit-content">Send Enquiry</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">NOVARIX<span>.</span>LEGAL</div>
+  <p>Mahi Sharma &mdash; Advocate &mdash; Delhi High Court</p>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#practice">Practice</a>
+    <a href="#insights">Insights</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
