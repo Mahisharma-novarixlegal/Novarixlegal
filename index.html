@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0042)file:///Users/Maahi/Downloads/index_2.html -->
+<!-- saved from url=(0040)file:///Users/Maahi/Downloads/index.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Novarix Legal — Mahi Sharma</title>
-<link href="./kndex_files/css2" rel="stylesheet">
+<link href="./index_files/css2" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -22,8 +22,8 @@
   --rule-lt:rgba(36,26,20,0.13);
 }
 html{scroll-behavior:smooth}
-.mono{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.06em;color:var(--terracotta-lt);opacity:0.7}
 body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--sand);line-height:1.7;font-size:16px;overflow-x:hidden}
+.mono{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.06em;color:var(--terracotta-lt);opacity:0.75}
 
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(36,26,20,0.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
 .nav-brand{display:flex;align-items:center;gap:0.7rem;text-decoration:none}
@@ -37,7 +37,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-watermark{position:absolute;bottom:-3rem;right:-2rem;width:520px;height:520px;opacity:0.04;pointer-events:none}
 .hero-main{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem 2rem;position:relative;z-index:1}
 .hero-mark{width:66px;height:66px;margin-bottom:2rem}
-.hero-kicker{display:flex;align-items:center;gap:0.8rem;margin-bottom:1.8rem}
+.hero-kicker{display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem}
 .hero-kicker-line{width:40px;height:1px;background:var(--terracotta)}
 .hero-kicker span{font-size:0.74rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--terracotta-lt)}
 .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6.5vw,5.6rem);font-weight:500;line-height:1.08;color:var(--sand);max-width:880px}
@@ -55,10 +55,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .ticker-dot{width:4px;height:4px;background:var(--terracotta);border-radius:50%}
 .ticker-item span{font-size:0.73rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--sand-dim);opacity:0.75;white-space:nowrap}
 
-#intro{background:var(--sand);color:var(--ink);padding:4rem;display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:center;border-top:1px solid var(--rule-lt);border-bottom:1px solid var(--rule-lt)}
+#intro{background:var(--sand);color:var(--ink);padding:4rem 4rem 0;display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:center;border-top:1px solid var(--rule-lt)}
 .intro-mark{font-family:'Cormorant Garamond',serif;font-size:3.6rem;font-style:italic;color:var(--terracotta);line-height:1}
 .intro-text{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-style:italic;color:#3a2c22;line-height:1.65}
 .intro-text strong{font-style:normal;font-family:'DM Sans',sans-serif;font-weight:500;color:var(--ink);font-size:1rem}
+
+.stat-row{background:var(--sand);border-bottom:1px solid var(--rule-lt);padding:3rem 4rem 3.5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:0;color:var(--ink)}
+.stat-col{padding:1.5rem 2rem 0;border-right:1px solid var(--rule-lt)}
+.stat-col:last-child{border-right:none}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--terracotta)}
+.stat-label{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.06em;color:var(--ink);opacity:0.55;margin-top:0.3rem}
 
 section{padding:5.5rem 4rem}
 .section-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;border-bottom:1px solid var(--rule);padding-bottom:1.4rem}
@@ -88,17 +94,6 @@ section{padding:5.5rem 4rem}
 .about-quote p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--sand-dim);opacity:0.9;line-height:1.6}
 .about-quote span{font-size:0.72rem;color:var(--sage-lt);letter-spacing:0.08em;text-transform:uppercase;display:block;margin-top:0.8rem}
 
-#insights{border-top:1px solid var(--rule)}
-.insights-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:2px;background:var(--rule);border:1px solid var(--rule)}
-.insight-card{background:var(--ink);padding:2.5rem 2.1rem}
-.insight-card.featured{border-left:2px solid var(--terracotta)}
-.insight-tag{font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage-lt)}
-.insight-title{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:500;color:var(--sand);margin:0.9rem 0 0.8rem;line-height:1.3}
-.insight-card.featured .insight-title{font-size:1.95rem}
-.insight-body{font-size:0.85rem;font-weight:300;color:var(--sand-dim);opacity:0.78;line-height:1.75}
-.insights-side{display:flex;flex-direction:column;gap:2px}
-.pill{display:inline-block;margin-top:1rem;padding:0.25rem 0.7rem;border:1px solid var(--rule);font-size:0.67rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--terracotta-lt)}
-
 #contact{background:var(--sand);color:var(--ink);border-top:1px solid var(--rule-lt);display:grid;grid-template-columns:1fr 1fr;gap:4rem}
 .contact-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.2vw,2.8rem);font-weight:500;color:var(--ink);line-height:1.2;margin-bottom:1.4rem}
 .contact-sub{font-size:0.95rem;color:#5a4536;opacity:0.85;margin-bottom:2.2rem;line-height:1.75}
@@ -123,16 +118,19 @@ footer p{font-size:0.75rem;color:var(--terracotta-lt);opacity:0.8}
 .footer-links{display:flex;gap:1.6rem}
 .footer-links a{font-size:0.71rem;color:var(--terracotta-lt);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;opacity:0.8}
 .footer-links a:hover{opacity:1;color:var(--sand)}
+.footer-bar{background:var(--ink);text-align:center;padding:0.8rem;border-top:1px solid var(--rule)}
 
 @media(max-width:900px){
   nav{padding:1rem 1.5rem}.nav-links{gap:1.1rem}
   .hero-main{padding:6rem 1.5rem 2rem}.hero-ticker{padding:1.2rem 1.5rem;gap:2rem}
-  #intro{padding:3rem 1.5rem;grid-template-columns:1fr;gap:1.5rem}
+  #intro{padding:3rem 1.5rem 0;grid-template-columns:1fr;gap:1.5rem}
+  .stat-row{padding:2rem 1.5rem 2.5rem;grid-template-columns:1fr}
+  .stat-col{border-right:none;border-bottom:1px solid var(--rule-lt);padding-bottom:1.2rem;margin-bottom:1.2rem}
+  .stat-col:last-child{border-bottom:none}
   section{padding:4rem 1.5rem}.section-top{flex-direction:column;align-items:flex-start;gap:1rem}
   .practice-item{grid-template-columns:40px 1fr}.practice-tag{display:none}
   #about,#contact{grid-template-columns:1fr;gap:2.5rem}
   .about-stat-row{grid-template-columns:1fr 1fr}.about-stat:nth-child(2){border-right:none}.about-stat:nth-child(3){border-top:1px solid var(--rule)}
-  .insights-grid{grid-template-columns:1fr}.insight-card.featured{border-left:none;border-top:2px solid var(--terracotta)}
   footer{flex-direction:column;gap:1rem;text-align:center;padding:2rem 1.5rem}.footer-links{flex-wrap:wrap;justify-content:center}
 }
 </style>
@@ -140,7 +138,7 @@ footer p{font-size:0.75rem;color:var(--terracotta-lt);opacity:0.8}
 <body>
 
 <nav>
-  <a href="file:///Users/Maahi/Downloads/index_2.html#" class="nav-brand">
+  <a href="file:///Users/Maahi/Downloads/index.html#" class="nav-brand">
     <svg class="nav-mark" viewBox="0 0 100 100">
       <g transform="translate(50,52)">
         <path d="M -16 22 L -16 -22 L 8 22 L 8 -22" stroke="#F5EEE2" stroke-width="3" fill="none" stroke-linecap="square"></path>
@@ -152,10 +150,9 @@ footer p{font-size:0.75rem;color:var(--terracotta-lt);opacity:0.8}
     <span class="nav-name">Novarix Legal</span>
   </a>
   <ul class="nav-links">
-    <li><a href="file:///Users/Maahi/Downloads/index_2.html#about">About</a></li>
-    <li><a href="file:///Users/Maahi/Downloads/index_2.html#practice">Practice</a></li>
-    <li><a href="file:///Users/Maahi/Downloads/index_2.html#insights">Insights</a></li>
-    <li><a href="file:///Users/Maahi/Downloads/index_2.html#contact">Contact</a></li>
+    <li><a href="file:///Users/Maahi/Downloads/index.html#about">About</a></li>
+    <li><a href="file:///Users/Maahi/Downloads/index.html#practice">Practice</a></li>
+    <li><a href="file:///Users/Maahi/Downloads/index.html#contact">Contact</a></li>
   </ul>
 </nav>
 
@@ -184,8 +181,8 @@ footer p{font-size:0.75rem;color:var(--terracotta-lt);opacity:0.8}
     <h1 class="hero-title">Do you know who<br>to call when it<br><em>actually matters?</em></h1>
     <p class="hero-sub">Copyright. AI law. Real estate. Criminal. Civil. <strong>One full-spectrum legal practice.</strong> One person who knows how Delhi truly works — the courts, the system, the ground.</p>
     <div class="hero-cta">
-      <a href="file:///Users/Maahi/Downloads/index_2.html#practice" class="btn-fill">See practice areas</a>
-      <a href="file:///Users/Maahi/Downloads/index_2.html#contact" class="btn-outline">Talk to Mahi</a>
+      <a href="file:///Users/Maahi/Downloads/index.html#practice" class="btn-fill">See practice areas</a>
+      <a href="file:///Users/Maahi/Downloads/index.html#contact" class="btn-outline">Talk to Mahi</a>
     </div>
     <p class="mono" style="margin-top:1.6rem">ACTIVE · PRACTICE/v1 · DELHI HIGH COURT</p>
   </div>
@@ -205,25 +202,25 @@ footer p{font-size:0.75rem;color:var(--terracotta-lt);opacity:0.8}
   <div class="intro-text">Most lawyers know the law. <strong>Few know Delhi</strong> — the thana, the tehsil, the registrar's office, the courtroom. That difference is the whole practice.</div>
 </div>
 
-<div style="background:var(--sand);border-bottom:1px solid var(--rule-lt);padding:0 4rem 3.5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:0;color:var(--ink)">
-  <div style="padding:1.5rem 2rem 0;border-right:1px solid var(--rule-lt)">
-    <div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:2.4rem;color:var(--terracotta)">6+</div>
-    <p class="mono" style="color:var(--ink);opacity:0.55">PRACTICE AREAS UNIFIED</p>
+<div class="stat-row">
+  <div class="stat-col">
+    <div class="stat-num">6+</div>
+    <div class="stat-label">PRACTICE AREAS UNIFIED</div>
   </div>
-  <div style="padding:1.5rem 2rem 0;border-right:1px solid var(--rule-lt)">
-    <div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:2.4rem;color:var(--terracotta)">48hrs</div>
-    <p class="mono" style="color:var(--ink);opacity:0.55">AVG. RESPONSE TIME</p>
+  <div class="stat-col">
+    <div class="stat-num">48hrs</div>
+    <div class="stat-label">AVG. RESPONSE TIME</div>
   </div>
-  <div style="padding:1.5rem 2rem 0">
-    <div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:2.4rem;color:var(--terracotta)">DHC</div>
-    <p class="mono" style="color:var(--ink);opacity:0.55">PRIMARY JURISDICTION</p>
+  <div class="stat-col">
+    <div class="stat-num">DHC</div>
+    <div class="stat-label">PRIMARY JURISDICTION</div>
   </div>
 </div>
 
 <section id="practice">
   <div class="section-top">
     <div><p class="eyebrow">§ 01 · Practice Areas</p><h2 class="section-title">What I do.</h2></div>
-    <a href="file:///Users/Maahi/Downloads/index_2.html#contact" class="btn-outline">Get in touch</a>
+    <a href="file:///Users/Maahi/Downloads/index.html#contact" class="btn-outline">Get in touch</a>
   </div>
   <div class="practice-list">
     <div class="practice-item"><div class="practice-num">I.</div><div><div class="practice-name">Copyright &amp; IP Enforcement</div><div class="practice-desc">Legal counsel to CINEFIL Producers Performance Limited, a registered copyright society under the Copyright Act, 1957. Enforcement across hospitality, healthcare, retail and broadcasting — demand notices, Delhi HC injunctions, commercial suits.</div></div><div class="practice-tag">Active</div></div>
@@ -260,35 +257,16 @@ footer p{font-size:0.75rem;color:var(--terracotta-lt);opacity:0.8}
   </div>
 </section>
 
-<section id="insights">
-  <div class="section-top">
-    <div><p class="eyebrow">§ 03 · Insights</p><h2 class="section-title">The writing.</h2></div>
-    <a href="file:///Users/Maahi/Downloads/index_2.html#contact" class="btn-outline">Get notified</a>
-  </div>
-  <div class="insights-grid">
-    <div class="insight-card featured">
-      <div class="insight-tag">AI Law — Featured</div>
-      <div class="insight-title">Anil Kapoor v. Simply Life India: what the order means for AI and your identity</div>
-      <div class="insight-body">The Delhi HC injunction extended identity protection beyond photographs to voice, mannerisms and AI-generated replicas — a key precedent for AI law in India. What it establishes, and what it leaves open.</div>
-      <span class="pill">Coming soon — AI Law Series</span>
-    </div>
-    <div class="insights-side">
-      <div class="insight-card"><div class="insight-tag">Copyright</div><div class="insight-title" style="font-size:1.2rem">Why hotels keep breaking copyright law without knowing it</div><div class="insight-body">The law on public performance is settled. Compliance isn't. A primer on the framework.</div><span class="pill">Coming soon</span></div>
-      <div class="insight-card"><div class="insight-tag">AI &amp; Law</div><div class="insight-title" style="font-size:1.2rem">Deepfakes and the gap in Indian statute</div><div class="insight-body">India has no dedicated law on synthetic media misuse. What protects you today — and where it breaks.</div><span class="pill">Coming soon</span></div>
-    </div>
-  </div>
-</section>
-
 <section id="contact">
   <div>
-    <p class="mono" style="color:var(--terracotta);margin-bottom:0.8rem">§ 04 · CONTACT</p>
+    <p class="mono" style="color:var(--terracotta);margin-bottom:0.8rem">§ 03 · CONTACT</p>
     <div class="contact-headline">Let's talk about your matter.</div>
     <p class="contact-sub">No forms that go nowhere. Every enquiry is read personally — not filtered by a junior associate.</p>
     <div class="contact-item"><h4>Office</h4><p>A-62, First Floor, Defence Colony,<br>New Delhi — 110024</p></div>
     <div class="contact-item"><h4>Email</h4><p><a href="mailto:office@novarixlegal.in">office@novarixlegal.in</a></p></div>
     <div class="contact-item"><h4>Response time</h4><p>Within 48 hours. Urgent matters — say so in your message.</p></div>
     <div class="map-frame">
-      <iframe loading="lazy" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade" src="./kndex_files/maps.html"></iframe>
+      <iframe loading="lazy" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade" src="./index_files/maps.html"></iframe>
     </div>
   </div>
   <div class="form">
@@ -314,9 +292,9 @@ footer p{font-size:0.75rem;color:var(--terracotta-lt);opacity:0.8}
     <span>Novarix Legal</span>
   </div>
   <p>Mahi Sharma — Advocate — office@novarixlegal.in</p>
-  <div class="footer-links"><a href="file:///Users/Maahi/Downloads/index_2.html#about">About</a><a href="file:///Users/Maahi/Downloads/index_2.html#practice">Practice</a><a href="file:///Users/Maahi/Downloads/index_2.html#insights">Insights</a><a href="file:///Users/Maahi/Downloads/index_2.html#contact">Contact</a></div>
+  <div class="footer-links"><a href="file:///Users/Maahi/Downloads/index.html#about">About</a><a href="file:///Users/Maahi/Downloads/index.html#practice">Practice</a><a href="file:///Users/Maahi/Downloads/index.html#contact">Contact</a></div>
 </footer>
-<div style="background:var(--ink);text-align:center;padding:0.8rem;border-top:1px solid var(--rule)">
+<div class="footer-bar">
   <span class="mono">© 2026 NOVARIX LEGAL · NEW DELHI · A-62 DEFENCE COLONY</span>
 </div>
 
