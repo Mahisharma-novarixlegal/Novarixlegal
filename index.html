@@ -1,284 +1,687 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Novarix Legal</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novarix Legal — Law Firm · Higher Standards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
+/* ── RESET ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+
+/* ── BRAND TOKENS ── */
 :root{
-  --ink:#241A14;
-  --ink-mid:#3A2C22;
-  --navy:#16263D;
-  --terracotta:#A8512F;
-  --terracotta-lt:#C77850;
-  --sage:#5C7A6B;
-  --sage-lt:#7E9C8D;
-  --brass:#B08D57;
-  --sand:#F5EEE2;
-  --sand-dim:#EBE1CF;
-  --rule:rgba(245,238,226,0.13);
-  --rule-lt:rgba(36,26,20,0.13);
+  /* Brand palette — Novarix Legal brand book */
+  --red:        #8B0000;
+  --red-hover:  #A52020;
+  --charcoal:   #1A1A1A;
+  --charcoal-2: #2E2D2B;
+  --ivory:      #FDFBF7;
+  --ivory-2:    #F4F2EC;
+  --ivory-3:    #E8E5DD;
+  --gold:       #D4AF7C;
+  --stone:      #6E6C68;
+  --stone-l:    #9B9892;
+  --ink:        #141417;
+
+  /* Semantic surfaces */
+  --surface:         var(--ivory);
+  --surface-alt:     var(--ivory-2);
+  --surface-deep:    var(--charcoal);
+  --surface-darkest: var(--ink);
+  --text-primary:    var(--charcoal);
+  --text-secondary:  var(--stone);
+  --text-muted:      var(--stone-l);
+  --text-accent:     var(--red);
+  --border:          rgba(26,26,26,0.10);
+  --border-strong:   rgba(26,26,26,0.18);
+  --accent:          var(--red);
+  --accent-hover:    var(--red-hover);
+
+  /* Typography scale — from token system, adapted */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:  'Inter', ui-sans-serif, system-ui, sans-serif;
+  --fs-micro:   11px;
+  --lh-micro:   16px;
+  --fs-small:   13px;
+  --lh-small:   20px;
+  --fs-body:    15px;
+  --lh-body:    26px;
+  --fs-lead:    17px;
+  --lh-lead:    28px;
+
+  /* Spacing & layout */
+  --site-max:    1560px;
+  --gutter-x:    60px;
+  --section-gap: 96px;
+  --radius:      0px;
 }
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',Helvetica,Arial,sans-serif;background:var(--ink);color:var(--sand);line-height:1.7;font-size:16px;overflow-x:hidden}
-.serif,.hero-title,.section-title,.intro-mark,.intro-text,.practice-name,.about-quote p,.nav-name{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
-
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(36,26,20,0.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
-.nav-brand{display:flex;align-items:center;gap:0.7rem;text-decoration:none}
-.nav-mark{width:46px;height:23px}
-.nav-name{font-family:'Cormorant Garamond',serif;font-size:1.18rem;letter-spacing:0.04em;color:var(--sand)}
-.nav-links{display:flex;gap:2.4rem;list-style:none}
-.nav-links a{font-size:0.73rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--terracotta-lt);text-decoration:none;transition:color 0.2s}
-.nav-links a:hover{color:var(--sand)}
-
-.hero{min-height:100vh;display:grid;grid-template-rows:1fr auto;padding-top:5rem;position:relative;overflow:hidden}
-.hero-watermark{position:absolute;bottom:-3rem;right:-2rem;width:520px;height:520px;opacity:0.04;pointer-events:none}
-.hero-main{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem 2rem;position:relative;z-index:1}
-.hero-mark{width:96px;height:48px;margin-bottom:2rem}
-.hero-kicker{display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem}
-.hero-kicker-line{width:40px;height:1px;background:var(--terracotta)}
-.hero-kicker span{font-size:0.74rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--terracotta-lt)}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6.5vw,5.6rem);font-weight:500;line-height:1.08;color:var(--sand);max-width:880px}
-.hero-title em{font-style:italic;color:var(--terracotta-lt)}
-.hero-sub{margin-top:2rem;font-size:1.05rem;font-weight:300;color:var(--sand-dim);max-width:560px;line-height:1.85;opacity:0.85}
-.hero-sub strong{color:var(--sand);font-weight:500}
-.hero-cta{display:flex;gap:1.1rem;margin-top:2.8rem;flex-wrap:wrap}
-.btn-fill{display:inline-block;padding:0.85rem 2.1rem;background:var(--terracotta);color:var(--sand);font-size:0.76rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border:1px solid var(--terracotta);transition:opacity 0.2s}
-.btn-fill:hover{opacity:0.85}
-.btn-outline{display:inline-block;padding:0.85rem 2.1rem;background:transparent;color:var(--sand);font-size:0.76rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border:1px solid var(--rule);transition:border-color 0.2s}
-.btn-outline:hover{border-color:var(--sand)}
-
-.hero-ticker{border-top:1px solid var(--rule);padding:1.4rem 4rem;display:flex;gap:3.5rem;overflow:hidden;position:relative;z-index:1}
-.ticker-item{display:flex;align-items:center;gap:0.9rem;flex-shrink:0}
-.ticker-dot{width:4px;height:4px;background:var(--terracotta);border-radius:50%}
-.ticker-item span{font-size:0.73rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--sand-dim);opacity:0.75;white-space:nowrap}
-
-#intro{background:var(--sand);color:var(--ink);padding:4rem 4rem 0;display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:center;border-top:1px solid var(--rule-lt)}
-.intro-mark{font-family:'Cormorant Garamond',serif;font-size:3.6rem;font-style:italic;color:var(--terracotta);line-height:1}
-.intro-text{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-style:italic;color:#3a2c22;line-height:1.65}
-.intro-text strong{font-style:normal;font-family:'DM Sans',sans-serif;font-weight:500;color:var(--ink);font-size:1rem}
-
-.stat-row{background:var(--sand);border-bottom:1px solid var(--rule-lt);padding:3rem 4rem 3.5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:0;color:var(--ink)}
-.stat-col{padding:1.5rem 2rem 0;border-right:1px solid var(--rule-lt)}
-.stat-col:last-child{border-right:none}
-.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--terracotta)}
-.stat-label{font-family:'DM Sans',sans-serif;font-size:0.68rem;letter-spacing:0.06em;color:var(--ink);opacity:0.55;margin-top:0.3rem;text-transform:uppercase}
-
-section{padding:5.5rem 4rem}
-.section-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;border-bottom:1px solid var(--rule);padding-bottom:1.4rem}
-.eyebrow{font-size:0.73rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--terracotta-lt);margin-bottom:0.6rem}
-.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.4rem);font-weight:500;color:var(--sand);line-height:1.1}
-
-#practice{border-top:1px solid var(--rule)}
-.practice-list{display:flex;flex-direction:column}
-.practice-item{display:grid;grid-template-columns:70px 1fr auto;align-items:start;gap:2rem;padding:1.9rem 0;border-bottom:1px solid var(--rule)}
-.practice-num{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--brass)}
-.practice-name{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:500;color:var(--sand);margin-bottom:0.5rem;line-height:1.15}
-.practice-desc{font-size:0.85rem;font-weight:300;color:var(--sand-dim);opacity:0.78;line-height:1.7;max-width:620px}
-.practice-tag{font-size:0.66rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--terracotta-lt);border:1px solid var(--terracotta);padding:0.3rem 0.7rem;white-space:nowrap;align-self:flex-start;margin-top:0.3rem}
-
-#about{background:var(--navy);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;gap:4rem}
-#about p{font-size:0.96rem;font-weight:300;color:var(--sand-dim);line-height:1.9;margin-bottom:1.15rem;opacity:0.92}
-#about p strong{color:var(--sand);font-weight:500}
-.about-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--rule);margin-top:2rem}
-.about-stat{padding:1.4rem;border-right:1px solid var(--rule)}
-.about-stat:last-child{border-right:none}
-.about-stat-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--terracotta-lt);line-height:1}
-.about-stat-label{font-size:0.7rem;color:var(--sand-dim);opacity:0.7;text-transform:uppercase;letter-spacing:0.07em;margin-top:0.3rem}
-.affiliation{padding:1.3rem 1.4rem;border:1px solid var(--rule);margin-bottom:1rem;background:rgba(0,0,0,0.14)}
-.affiliation h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--sand);font-weight:500}
-.affiliation p{font-size:0.8rem;color:var(--sand-dim);opacity:0.75;margin-top:0.2rem}
-.about-quote{margin-top:1.5rem;padding:1.6rem;border:1px solid var(--rule);border-left:3px solid var(--sage-lt)}
-.about-quote p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--sand-dim);opacity:0.9;line-height:1.6}
-.about-quote span{font-size:0.72rem;color:var(--sage-lt);letter-spacing:0.08em;text-transform:uppercase;display:block;margin-top:0.8rem}
-
-#contact{background:var(--sand);color:var(--ink);border-top:1px solid var(--rule-lt);display:grid;grid-template-columns:1fr 1fr;gap:4rem}
-.contact-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.2vw,2.8rem);font-weight:500;color:var(--ink);line-height:1.2;margin-bottom:1.4rem}
-.contact-sub{font-size:0.95rem;color:#5a4536;opacity:0.85;margin-bottom:2.2rem;line-height:1.75}
-.contact-item{margin-bottom:1.5rem}
-.contact-item h4{font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--terracotta);margin-bottom:0.3rem}
-.contact-item p{font-size:0.92rem;color:#3a2c22}
-.contact-item a{color:var(--terracotta);text-decoration:underline}
-.map-frame{margin-top:1.8rem;border:1px solid var(--rule-lt);position:relative;overflow:hidden;height:280px}
-.map-frame iframe{width:100%;height:100%;border:0;filter:saturate(0.85) contrast(1.02)}
-.form{display:flex;flex-direction:column;gap:1rem}
-.form-group{display:flex;flex-direction:column;gap:0.4rem}
-.form-group label{font-size:0.7rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--terracotta)}
-.form-group input,.form-group textarea,.form-group select{padding:0.85rem 1rem;background:#fff;border:1px solid var(--rule-lt);font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--ink);outline:none;transition:border-color 0.2s;appearance:none}
-.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--terracotta)}
-.form-group textarea{resize:vertical;min-height:110px}
-.btn-submit{cursor:pointer;border:none;padding:0.9rem 2rem;background:var(--terracotta);color:#fff;font-size:0.78rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;width:fit-content}
-
-footer{background:var(--ink);border-top:1px solid var(--rule);padding:2.2rem 4rem;display:flex;justify-content:space-between;align-items:center}
-.footer-brand{display:flex;align-items:center;gap:0.6rem}
-.footer-brand span{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--sand)}
-footer p{font-size:0.75rem;color:var(--terracotta-lt);opacity:0.8}
-.footer-links{display:flex;gap:1.6rem}
-.footer-links a{font-size:0.71rem;color:var(--terracotta-lt);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;opacity:0.8}
-.footer-links a:hover{opacity:1;color:var(--sand)}
-.footer-bar{background:var(--ink);text-align:center;padding:0.8rem;border-top:1px solid var(--rule)}
 
 @media(max-width:900px){
-  nav{padding:1rem 1.5rem}.nav-links{gap:1.1rem}
-  .hero-main{padding:6rem 1.5rem 2rem}.hero-ticker{padding:1.2rem 1.5rem;gap:2rem}
-  #intro{padding:3rem 1.5rem 0;grid-template-columns:1fr;gap:1.5rem}
-  .stat-row{padding:2rem 1.5rem 2.5rem;grid-template-columns:1fr}
-  .stat-col{border-right:none;border-bottom:1px solid var(--rule-lt);padding-bottom:1.2rem;margin-bottom:1.2rem}
-  .stat-col:last-child{border-bottom:none}
-  section{padding:4rem 1.5rem}.section-top{flex-direction:column;align-items:flex-start;gap:1rem}
-  .practice-item{grid-template-columns:40px 1fr}.practice-tag{display:none}
-  #about,#contact{grid-template-columns:1fr;gap:2.5rem}
-  .about-stat-row{grid-template-columns:1fr 1fr}.about-stat:nth-child(2){border-right:none}.about-stat:nth-child(3){border-top:1px solid var(--rule)}
-  footer{flex-direction:column;gap:1rem;text-align:center;padding:2rem 1.5rem}.footer-links{flex-wrap:wrap;justify-content:center}
+  :root{
+    --gutter-x:   24px;
+    --section-gap:64px;
+  }
 }
+
+/* ── BASE ── */
+html{scroll-behavior:smooth;background:var(--surface)}
+body{font-family:var(--font-sans);font-size:var(--fs-body);line-height:var(--lh-body);color:var(--text-primary);background:var(--surface);overflow-x:hidden}
+::selection{background:var(--red);color:#fff}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ── UTILS ── */
+.eyebrow{font-size:var(--fs-micro);letter-spacing:.22em;text-transform:uppercase;color:var(--text-muted);display:flex;align-items:center;gap:10px;margin-bottom:14px;font-weight:400}
+.eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--red);flex-shrink:0}
+.eyebrow-w{font-size:var(--fs-micro);letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.32);display:flex;align-items:center;gap:10px;margin-bottom:14px;font-weight:400}
+.eyebrow-w::before{content:'';display:block;width:24px;height:1px;background:var(--red);flex-shrink:0}
+.headline{font-family:var(--font-serif);font-size:clamp(36px,4vw,60px);font-weight:600;color:var(--charcoal);line-height:1.08;letter-spacing:-.01em}
+.headline-w{font-family:var(--font-serif);font-size:clamp(36px,4vw,60px);font-weight:600;color:#fff;line-height:1.08;letter-spacing:-.01em}
+.lead{font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--text-secondary);font-weight:300}
+.tag{font-size:var(--fs-micro);letter-spacing:.12em;border:1px solid var(--border-strong);padding:3px 9px;display:inline-block;color:var(--text-secondary)}
+.tag-red{font-size:var(--fs-micro);letter-spacing:.12em;border:1px solid rgba(139,0,0,.28);color:var(--red);padding:3px 9px;display:inline-block}
+.lnk{font-size:var(--fs-small);color:var(--red);border-bottom:1px solid rgba(139,0,0,.22);padding-bottom:1px;transition:border-color .2s;letter-spacing:.04em}
+.lnk:hover{border-color:var(--red)}
+.lnk-w{font-size:var(--fs-small);color:rgba(255,255,255,.42);border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:1px;transition:color .2s,border-color .2s;letter-spacing:.04em}
+.lnk-w:hover{color:#fff;border-color:rgba(255,255,255,.5)}
+.btn{display:inline-block;padding:13px 34px;font-size:var(--fs-small);font-weight:500;letter-spacing:.1em;transition:background .2s,color .2s,border-color .2s;cursor:pointer;border:none;font-family:var(--font-sans)}
+.btn-red{background:var(--red);color:#fff}.btn-red:hover{background:var(--red-hover)}
+.btn-outline{background:transparent;border:1px solid var(--border-strong);color:var(--charcoal)}.btn-outline:hover{border-color:var(--charcoal)}
+.btn-w{background:#fff;color:var(--charcoal)}.btn-w:hover{opacity:.9}
+.divider{width:100%;height:1px;background:var(--border)}
+
+/* ── SECTION ── */
+.sec{padding:var(--section-gap) var(--gutter-x);max-width:var(--site-max);margin:0 auto}
+.sec-wrap{padding:var(--section-gap) 0;background:var(--surface)}
+.sec-wrap.alt{background:var(--surface-alt)}
+.sec-wrap.dark{background:var(--surface-deep)}
+.sec-wrap.darkest{background:var(--surface-darkest)}
+.sec-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;flex-wrap:wrap;gap:16px}
+.sec-header-stack{margin-bottom:52px}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--charcoal);padding:9px var(--gutter-x)}
+.topbar-inner{max-width:var(--site-max);margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.topbar span{font-size:var(--fs-micro);color:rgba(255,255,255,.35);letter-spacing:.1em}
+.topbar-links{display:flex;gap:24px}
+.topbar-links a{font-size:var(--fs-micro);color:rgba(255,255,255,.4);letter-spacing:.1em;transition:color .2s}
+.topbar-links a:hover{color:#fff}
+
+/* ── NAV ── */
+.nav-outer{position:sticky;top:0;z-index:300;background:var(--ivory);border-bottom:1px solid var(--border)}
+nav{max-width:var(--site-max);margin:0 auto;padding:0 var(--gutter-x);height:72px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:14px}
+.nav-logo img{height:46px;width:auto;object-fit:contain}
+.nav-wordmark{line-height:1}
+.nav-wm-main{font-family:var(--font-serif);font-size:17px;font-weight:700;color:var(--charcoal);letter-spacing:.12em;display:block}
+.nav-wm-sub{font-size:8px;letter-spacing:.24em;color:var(--stone);display:block;margin-top:3px}
+.nav-links{list-style:none;display:flex}
+.nav-links a{display:block;padding:0 15px;font-size:var(--fs-micro);letter-spacing:.08em;color:var(--stone);line-height:72px;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+.nav-links a:hover{color:var(--charcoal);border-bottom-color:var(--red)}
+.nav-cta{background:var(--red);color:#fff;padding:11px 26px;font-size:var(--fs-micro);font-weight:500;letter-spacing:.1em;transition:background .2s}
+.nav-cta:hover{background:var(--red-hover)}
+
+/* ── HERO ── */
+.hero-outer{background:var(--ivory);overflow:hidden}
+.hero-inner{max-width:var(--site-max);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 72px - 38px)}
+.hero-l{display:flex;flex-direction:column;justify-content:center;padding:88px var(--gutter-x) 88px var(--gutter-x);border-right:1px solid var(--border);position:relative}
+.hero-h1{font-family:var(--font-serif);font-size:clamp(46px,5.5vw,82px);font-weight:600;color:var(--charcoal);line-height:1.06;letter-spacing:-.015em;margin:24px 0 28px}
+.hero-h1 em{font-style:italic;color:var(--red)}
+.hero-sub{font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--text-secondary);font-weight:300;max-width:460px;margin-bottom:44px}
+.hero-sub strong{color:var(--charcoal);font-weight:400}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px}
+.hero-stamp{font-family:var(--font-serif);font-size:14px;font-style:italic;color:var(--text-muted);border-top:1px solid var(--border);padding-top:22px;letter-spacing:.04em;max-width:400px}
+.hero-r{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:88px var(--gutter-x);background:var(--ivory-2);gap:36px}
+.hero-logo{width:min(300px,62%);height:auto}
+.hero-sep{display:flex;align-items:center;gap:14px;width:100%;justify-content:center}
+.hero-sep-line{flex:1;height:1px;background:var(--border);max-width:60px}
+.hero-sep span{font-size:var(--fs-micro);letter-spacing:.24em;color:var(--stone-l)}
+.hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);width:100%;max-width:320px}
+.hstat{background:var(--ivory);padding:22px 18px;text-align:center}
+.hstat-n{font-family:var(--font-serif);font-size:38px;font-weight:400;color:var(--charcoal);line-height:1;margin-bottom:5px}
+.hstat-l{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone-l)}
+
+/* ── MARQUEE ── */
+.marquee-outer{background:var(--charcoal);padding:13px 0;overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-block;animation:scroll 32s linear infinite}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.mi{display:inline-block;font-size:var(--fs-micro);letter-spacing:.16em;color:rgba(255,255,255,.3);margin:0 32px;text-transform:uppercase}
+.ms{display:inline-block;width:3px;height:3px;border-radius:50%;background:var(--red);vertical-align:middle;margin:0 8px}
+
+/* ── PRACTICE ── */
+.practice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.pc{background:var(--ivory);padding:40px 32px;position:relative;overflow:hidden;transition:background .25s}
+.pc::after{content:'';position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--red);transition:width .3s}
+.pc:hover{background:#fff}
+.pc:hover::after{width:100%}
+.pc-num{font-family:var(--font-serif);font-size:13px;font-style:italic;color:var(--stone-l);display:block;margin-bottom:20px}
+.pc h3{font-family:var(--font-serif);font-size:21px;font-weight:600;color:var(--charcoal);margin-bottom:12px;line-height:1.25}
+.pc p{font-size:var(--fs-small);color:var(--text-secondary);line-height:1.85;font-weight:300;margin-bottom:22px}
+
+/* ── KNOWLEDGE HUB ── */
+.hub-layout{display:grid;grid-template-columns:1.55fr 1fr;gap:44px;align-items:start}
+.hub-stack{display:flex;flex-direction:column;gap:24px}
+
+/* Featured card */
+.art-hero{border:1px solid var(--border);background:var(--ivory);display:grid;grid-template-columns:1fr 1.15fr;overflow:hidden;transition:box-shadow .25s}
+.art-hero:hover{box-shadow:0 8px 40px rgba(26,26,26,.08)}
+.art-banner{background:var(--charcoal);display:flex;flex-direction:column;justify-content:flex-end;padding:28px;min-height:190px;position:relative;overflow:hidden}
+.art-banner::before{content:'"';font-family:var(--font-serif);font-size:200px;color:rgba(255,255,255,.03);position:absolute;top:-40px;left:0;line-height:1;pointer-events:none}
+.art-banner-type{font-size:9px;letter-spacing:.18em;color:var(--red);text-transform:uppercase;margin-bottom:7px;position:relative;z-index:1}
+.art-banner-src{font-size:var(--fs-micro);color:rgba(255,255,255,.32);letter-spacing:.1em;position:relative;z-index:1}
+.art-body{padding:28px 28px 24px;display:flex;flex-direction:column;justify-content:space-between}
+.art-meta{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.art-cat{font-size:9px;letter-spacing:.12em;background:var(--ivory-2);color:var(--charcoal);border:1px solid var(--border);padding:3px 8px;text-transform:uppercase}
+.art-date{font-size:var(--fs-micro);color:var(--stone-l)}
+.art-body h3{font-family:var(--font-serif);font-size:20px;font-weight:600;color:var(--charcoal);line-height:1.3;margin-bottom:10px}
+.art-body>p{font-size:var(--fs-small);color:var(--text-secondary);line-height:1.85;font-weight:300;margin-bottom:14px}
+
+/* Mahi's take */
+.take{background:var(--ivory-2);border-left:2px solid var(--red);padding:13px 16px;margin-bottom:16px}
+.take-lbl{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);font-weight:500;margin-bottom:5px}
+.take-text{font-size:12px;color:var(--charcoal);line-height:1.75;font-style:italic}
+
+/* 2-col article row */
+.art-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+.art-col{background:var(--ivory);padding:28px;transition:background .2s}
+.art-col:hover{background:#fff}
+.art-col h3{font-family:var(--font-serif);font-size:18px;font-weight:600;color:var(--charcoal);line-height:1.3;margin-bottom:8px}
+.art-col>p{font-size:var(--fs-small);color:var(--text-secondary);line-height:1.8;font-weight:300;margin-bottom:14px}
+
+/* Sidebar */
+.hub-side{display:flex;flex-direction:column;gap:20px}
+.sbox{border:1px solid var(--border);background:var(--ivory);overflow:hidden}
+.sbox-title{padding:16px 20px;border-bottom:1px solid var(--border);font-family:var(--font-serif);font-size:15px;font-weight:600;color:var(--charcoal)}
+.topic-list{list-style:none}
+.topic-list li{border-bottom:1px solid var(--border)}
+.topic-list li:last-child{border-bottom:none}
+.topic-list a{display:flex;align-items:center;justify-content:space-between;padding:11px 20px;font-size:var(--fs-small);color:var(--text-primary);transition:background .2s,color .2s}
+.topic-list a:hover{background:var(--ivory-2);color:var(--red)}
+.topic-list a span{font-size:var(--fs-micro);color:var(--stone-l);background:var(--ivory-2);border:1px solid var(--border);padding:2px 7px}
+.rp-list{display:flex;flex-direction:column}
+.rp-item{padding:15px 20px;border-bottom:1px solid var(--border);transition:background .2s}
+.rp-item:last-child{border-bottom:none}
+.rp-item:hover{background:var(--ivory-2)}
+.rp-src{font-size:9px;letter-spacing:.12em;color:var(--stone-l);text-transform:uppercase;margin-bottom:5px}
+.rp-title{font-family:var(--font-serif);font-size:14px;font-weight:600;color:var(--charcoal);line-height:1.3;margin-bottom:4px}
+.rp-take{font-size:11px;color:var(--stone);font-style:italic;line-height:1.6}
+.sbox-cta{background:var(--red);border-color:var(--red)}
+.sbox-cta .sbox-title{color:#fff;border-color:rgba(255,255,255,.15)}
+.sbox-cta-body{padding:18px 20px}
+.sbox-cta-body p{font-size:var(--fs-small);color:rgba(255,255,255,.65);line-height:1.7;font-weight:300;margin-bottom:14px}
+.sbox-cta-body a{display:block;background:#fff;color:var(--red);text-align:center;padding:11px;font-size:var(--fs-micro);font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:opacity .2s}
+.sbox-cta-body a:hover{opacity:.88}
+
+/* ── PROCEDURES ── */
+.proc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.proc{background:var(--ivory);padding:36px 32px;cursor:pointer;transition:background .2s;-webkit-user-select:none;user-select:none}
+.proc:hover,.proc.open{background:#fff}
+.proc h3{font-family:var(--font-serif);font-size:19px;font-weight:600;color:var(--charcoal);line-height:1.28;margin-bottom:10px}
+.proc>p{font-size:var(--fs-small);color:var(--text-secondary);line-height:1.8;font-weight:300;margin-bottom:14px}
+.proc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.proc-tag{font-size:9px;letter-spacing:.1em;color:var(--stone);border:1px solid var(--border);padding:2px 7px;background:var(--ivory-2);text-transform:uppercase}
+.proc-toggle{font-size:var(--fs-micro);color:var(--red);font-weight:500;letter-spacing:.06em;display:inline-flex;align-items:center;gap:7px}
+.proc-toggle::before{content:'+';font-size:17px;font-weight:300;line-height:1;width:16px}
+.proc.open .proc-toggle::before{content:'−'}
+.proc-steps{background:var(--ivory-2);border-left:2px solid var(--red);padding:16px 18px;margin-top:14px;display:none}
+.proc.open .proc-steps{display:block}
+.proc-steps ol{padding-left:18px}
+.proc-steps li{font-size:var(--fs-small);color:var(--charcoal);line-height:1.9;margin-bottom:3px;font-weight:300}
+
+/* ── VIDEO ── */
+.vid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.vid{background:var(--charcoal-2);overflow:hidden;transition:transform .25s}
+.vid:hover{transform:translateY(-3px)}
+.vid-thumb{position:relative;padding-top:56.25%}
+.vid-thumb iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.vid-info{padding:18px 18px 20px}
+.vid-tag{font-size:9px;letter-spacing:.14em;color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.1);padding:3px 8px;display:inline-block;margin-bottom:9px;text-transform:uppercase}
+.vid-info h4{font-family:var(--font-serif);font-size:17px;font-weight:600;color:#fff;line-height:1.3;margin-bottom:6px}
+.vid-info p{font-size:12px;color:rgba(255,255,255,.38);line-height:1.65;font-weight:300}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:start}
+.about-text p{font-size:var(--fs-body);color:#333;line-height:1.95;margin-bottom:20px;font-weight:300}
+.about-text p strong{color:var(--charcoal);font-weight:500}
+.pull-quote{margin:36px 0;padding:26px 32px;border:1px solid var(--border);border-left:3px solid var(--red);background:#fff}
+.pull-quote blockquote{font-family:var(--font-serif);font-size:21px;font-style:italic;color:var(--charcoal);line-height:1.55;margin-bottom:10px;font-weight:400}
+.pull-quote cite{font-size:10px;letter-spacing:.12em;color:var(--stone-l);font-style:normal;text-transform:uppercase}
+.about-panel{display:flex;flex-direction:column}
+.a-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:28px}
+.ast{background:var(--ivory-2);padding:20px 14px;text-align:center}
+.ast-n{font-family:var(--font-serif);font-size:34px;font-weight:400;color:var(--charcoal);line-height:1;margin-bottom:4px}
+.ast-l{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone-l)}
+.aff{padding:18px 0;border-bottom:1px solid var(--border)}
+.aff:first-of-type{padding-top:0}
+.aff h4{font-size:var(--fs-small);font-weight:500;color:var(--charcoal);margin-bottom:3px}
+.aff p{font-size:12px;color:var(--stone);font-weight:300;line-height:1.6}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px}
+.cb{padding:20px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.cb:first-child{padding-top:0}
+.cb h4{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:9px}
+.cb p,.cb a{font-size:var(--fs-body);color:rgba(255,255,255,.6);line-height:1.75;font-weight:300;text-decoration:none}
+.cb a:hover{color:#fff}
+.c-note{margin-top:28px;font-family:var(--font-serif);font-size:18px;font-style:italic;color:rgba(255,255,255,.25);line-height:1.65}
+.cf{display:flex;flex-direction:column;gap:16px}
+.fg{display:flex;flex-direction:column;gap:6px}
+.fg label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.32)}
+.fg input,.fg select,.fg textarea{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:#fff;padding:12px 14px;font-family:var(--font-sans);font-size:var(--fs-small);font-weight:300;outline:none;transition:border-color .2s;width:100%;appearance:none;-webkit-appearance:none}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.18)}
+.fg select option{background:var(--charcoal)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--red)}
+.fg textarea{min-height:108px;resize:vertical}
+
+/* ── FOOTER ── */
+.ft-outer{background:var(--surface-darkest);border-top:1px solid rgba(255,255,255,.04)}
+.ft{max-width:var(--site-max);margin:0 auto;padding:48px var(--gutter-x) 28px}
+.ft-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:48px;gap:32px;flex-wrap:wrap}
+.ft-brand{max-width:260px}
+.ft-logo-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.ft-logo-row img{height:38px;width:auto}
+.ft-wm-main{font-family:var(--font-serif);font-size:14px;font-weight:700;color:rgba(255,255,255,.48);letter-spacing:.1em;display:block}
+.ft-wm-sub{font-size:7px;letter-spacing:.22em;color:rgba(255,255,255,.22);display:block;margin-top:3px;text-transform:uppercase}
+.ft-desc{font-size:12px;color:rgba(255,255,255,.25);line-height:1.8;font-weight:300}
+.ft-cols{display:flex;gap:52px;flex-wrap:wrap}
+.ft-col h5{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:14px}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.ft-col a{font-size:12px;color:rgba(255,255,255,.35);transition:color .2s}
+.ft-col a:hover{color:rgba(255,255,255,.75)}
+.ft-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:20px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.ft-copy{font-size:10px;color:rgba(255,255,255,.18);letter-spacing:.06em;text-transform:uppercase}
+.ft-disc{font-size:10px;color:rgba(255,255,255,.14);max-width:460px;line-height:1.65}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .topbar{display:none}
+  .nav-links,.nav-cta{display:none}
+  .hero-inner{grid-template-columns:1fr;min-height:auto}
+  .hero-r{padding:40px var(--gutter-x) 64px}
+  .practice-grid,.proc-grid{grid-template-columns:1fr}
+  .hub-layout,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .art-hero,.art-row{grid-template-columns:1fr}
+  .vid-grid{grid-template-columns:1fr}
+  .ft-top{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="#" class="nav-brand">
-    <svg class="nav-mark" viewBox="0 0 100 50">
-      <text x="0" y="38" font-size="40" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-weight="700" fill="#F5EEE2">N</text>
-      <text x="46" y="38" font-size="40" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-weight="700" fill="#A8512F">L</text>
-    </svg>
-    <span class="nav-name">Novarix Legal</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#practice">Practice</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<section class="hero">
-  <div class="hero-main">
-    <svg class="hero-mark" viewBox="0 0 100 50">
-      <text x="0" y="40" font-size="44" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-weight="700" fill="#F5EEE2">N</text>
-      <text x="48" y="40" font-size="44" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-weight="700" fill="#A8512F">L</text>
-    </svg>
-    <div class="hero-kicker">
-      <div class="hero-kicker-line"></div>
-      <span>Novarix Legal - Defence Colony, Delhi</span>
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span>A-62, First Floor, Defence Colony, New Delhi — 110024 &nbsp;·&nbsp; Higher Standards</span>
+    <div class="topbar-links">
+      <a href="mailto:office@novarixlegal.in">office@novarixlegal.in</a>
+      <a href="#knowledge">Knowledge Hub</a>
+      <a href="#procedures">Procedures</a>
+      <a href="#contact">Contact</a>
     </div>
-    <h1 class="hero-title">Do you know who<br/>to call when it<br/><em>actually matters?</em></h1>
-    <p class="hero-sub">Copyright. AI law. Real estate. Criminal. Civil. <strong>A Multi-spectrum legal practice.</strong> We understand what truly matters - the courts, the system, the ground.</p>
-    <div class="hero-cta">
-      <a href="#practice" class="btn-fill">See practice areas</a>
-      <a href="#contact" class="btn-outline">Consult Us</a>
-    </div>
-  </div>
-  <div class="hero-ticker">
-    <div class="ticker-item"><div class="ticker-dot"></div><span>Delhi High Court</span></div>
-    <div class="ticker-item"><div class="ticker-dot"></div><span>Copyright Enforcement</span></div>
-    <div class="ticker-item"><div class="ticker-dot"></div><span>Matrimonial Law</span></div>
-    <div class="ticker-item"><div class="ticker-dot"></div><span>Real Estate Law (NCLT/NCLAT)</span></div>
-    <div class="ticker-item"><div class="ticker-dot"></div><span>Criminal Law</span></div>
-    <div class="ticker-item"><div class="ticker-dot"></div><span>Civil &amp; Commercial</span></div>
-    <div class="ticker-item"><div class="ticker-dot"></div><span>Strategic Alliances</span></div>
-  </div>
-</section>
-
-<div id="intro">
-  <div class="intro-mark">N&middot;L</div>
-  <div class="intro-text">Most lawyers know the law. But only few know Delhi. There's no shortage of brilliance inside the courtroom. The real edge lies in everything before it - from cause of action to first hearing. That difference is the whole practice.</div>
-</div>
-
-<div class="stat-row">
-  <div class="stat-col">
-    <div class="stat-num">6+</div>
-    <div class="stat-label">PRACTICE AREAS UNIFIED</div>
-  </div>
-  <div class="stat-col">
-    <div class="stat-num">48hrs</div>
-    <div class="stat-label">AVG. RESPONSE TIME</div>
-  </div>
-  <div class="stat-col">
-    <div class="stat-num">DHC</div>
-    <div class="stat-label">PRIMARY JURISDICTION</div>
   </div>
 </div>
 
-<section id="practice">
-  <div class="section-top">
-    <div><p class="eyebrow">&sect; 01 &middot; Practice Areas</p><h2 class="section-title">What I do.</h2></div>
-    <a href="#contact" class="btn-outline">Get in touch</a>
-  </div>
-  <div class="practice-list">
-    <div class="practice-item"><div class="practice-num">I.</div><div><div class="practice-name">Copyright &amp; IP Enforcement</div><div class="practice-desc">Legal counsel to CINEFIL Producers Performance Limited, a registered copyright society under the Copyright Act, 1957. Enforcement across hospitality, healthcare, retail and broadcasting — demand notices, Delhi HC injunctions, commercial suits.</div></div><div class="practice-tag">Active</div></div>
-    <div class="practice-item"><div class="practice-num">II.</div><div><div class="practice-name">AI Law</div><div class="practice-desc">Advisory and litigation on the misuse of artificial intelligence — deepfakes, AI-generated replicas, synthetic media, and unauthorised digital impersonation. India's fastest-growing legal frontier.</div></div><div class="practice-tag">Emerging</div></div>
-    <div class="practice-item"><div class="practice-num">III.</div><div><div class="practice-name">Real Estate &amp; Property Law</div><div class="practice-desc">Strategic legal counsel and alliance partner for Altera Realty's Delhi NCR expansion. Developer advisory, PropTech structuring, title due diligence and property disputes.NCLT/NCLAT.</div></div><div class="practice-tag">Advisory</div></div>
-    <div class="practice-item"><div class="practice-num">IV.</div><div><div class="practice-name">Criminal Law</div><div class="practice-desc">Bail, anticipatory bail, FIR quashing and trial representation, grounded in real working knowledge of how Delhi Police operates.</div></div><div class="practice-tag">Litigation</div></div>
-    <div class="practice-item"><div class="practice-num">V.</div><div><div class="practice-name">Civil &amp; Commercial Litigation</div><div class="practice-desc">High Court litigation across injunctions, commercial disputes, recovery matters and appellate work — fast, precise, built around results.</div></div><div class="practice-tag">Litigation</div></div>
-    <div class="practice-item"><div class="practice-num">VI.</div><div><div class="practice-name">Consumer Protection</div><div class="practice-desc">Legal notices and representation against manufacturers and service providers — product liability, service deficiency, unfair trade practices.</div></div><div class="practice-tag">Advisory</div></div>
-  </div>
-</section>
+<!-- NAV -->
+<div class="nav-outer">
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="logo.png" alt="Novarix Legal">
+      <div class="nav-wordmark">
+        <span class="nav-wm-main">NOVARIX LEGAL</span>
+        <span class="nav-wm-sub">LAW FIRM</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#practice">Practice</a></li>
+      <li><a href="#knowledge">Knowledge</a></li>
+      <li><a href="#procedures">Procedures</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta btn">Talk to us</a>
+  </nav>
+</div>
 
-<section id="about">
-  <div>
-    <p class="eyebrow">&sect; 02 &middot; About</p>
-    <h2 class="section-title">The lawyer.</h2>
-    <p style="margin-top:1.8rem"></p>
-    <p>Our practice doesn't sit in one box. <strong>Copyright. AI law. Real estate. Criminal. Civil.</strong> Built this way on purpose, because the clients who need help most rarely arrive with a problem that fits neatly into a single category, and We would rather understand the whole picture than hand pieces of it away.</p>
-    <p>That range comes from genuinely sitting inside each world rather than studying it from outside — we read the judgments, Understand the Law , frame arguments the way our clients wants and get them the relief they seek but we also understand the system in and out , we understand the registrar who'll actually stamp the file, the inspector who'll actually visit the site, the desk where a notice quietly stalls if nobody follows up in person. Clients come back not because we know more law than the next advocate, but because we know how to move a matter in itself.</p>
-    <p>Delhi High Court,<strong>Legal Counsel to CINEFIL</strong> Producers Performance Limited, and as <strong>Strategic Advisor &amp; Alliance Partner to Altera Realty</strong> for their Delhi NCR expansion, Multi-forum litigation practice <strong></strong> in Defence Colony. Three different mandates, three very different rooms — and I show up the same way in each of them.</p>
-    <p>None of this is built alone. Every matter that comes through Novarix Legal runs through our team. A practice this wide only holds together if the people inside it are genuinely invested in it, not simply employed by it.</p>
-    <div class="about-stat-row">
-      <div class="about-stat"><div class="about-stat-num">DHC</div><div class="about-stat-label">Primary court</div></div>
-      <div class="about-stat"><div class="about-stat-num">6+</div><div class="about-stat-label">Practice areas</div></div>
-      <div class="about-stat"><div class="about-stat-num">NCR/Noida</div><div class="about-stat-label">Ground coverage</div></div>
+<!-- HERO -->
+<div class="hero-outer">
+  <div class="hero-inner">
+    <div class="hero-l">
+      <p class="eyebrow">Delhi HC · Supreme Court · NCLT · DRT</p>
+      <h1 class="hero-h1">The law should work for <em>everyone</em> who needs it.</h1>
+      <p class="hero-sub">Copyright. AI law. Criminal. Civil. Real estate. <strong>One full-spectrum practice</strong> built for clients who can't afford to be passed around — and a knowledge hub so anyone can understand their rights.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-red">Talk to Mahi</a>
+        <a href="#knowledge" class="btn btn-outline">Explore knowledge hub</a>
+      </div>
+      <p class="hero-stamp">A brighter tomorrow, a stronger legal tomorrow.</p>
+    </div>
+    <div class="hero-r">
+      <img src="logo.png" alt="Novarix Legal" class="hero-logo">
+      <div class="hero-sep">
+        <span class="hero-sep-line"></span>
+        <span>HIGHER STANDARDS</span>
+        <span class="hero-sep-line"></span>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="hstat-n">6+</div><div class="hstat-l">Practice areas</div></div>
+        <div class="hstat"><div class="hstat-n">DHC</div><div class="hstat-l">Primary court</div></div>
+        <div class="hstat"><div class="hstat-n">48h</div><div class="hstat-l">Response time</div></div>
+        <div class="hstat"><div class="hstat-n">NCR</div><div class="hstat-l">Coverage</div></div>
+      </div>
     </div>
   </div>
-  <div>
-    <div class="affiliation"><h4>CINEFIL Producers Performance Limited</h4><p>Legal Counsel — Registered Copyright Society under the Copyright Act, 1957</p></div>
-    <div class="affiliation"><h4>Novarix Legal, Defence Colony</h4><p>Multi - Forum Litigation</p></div>
-    <div class="affiliation"><h4>Altera Realty</h4><p>Strategic Advisor &amp; Alliance Partner, Delhi NCR — PropTech &amp; Real Estate Legal Counsel</p></div>
-    <div class="about-quote">
-      <p>"The law we practise was written for people who couldn't afford silence. We're here to make sure they don't have to."</p>
-      <span></span>
-    </div>
-  </div>
-</section>
+</div>
 
-<section id="contact">
-  <div>
-    <p class="eyebrow" style="margin-bottom:0.8rem">&sect; 03 &middot; Contact</p>
-    <div class="contact-headline">Let's talk about your matter.</div>
-    <p class="contact-sub">No forms that go nowhere. Every enquiry is read personally — not filtered by a junior associate.</p>
-    <div class="contact-item"><h4>Office</h4><p>A-62, First Floor, Defence Colony,<br/>New Delhi — 110024</p></div>
-    <div class="contact-item"><h4>Email</h4><p><a href="mailto:office@novarixlegal.in">office@novarixlegal.in</a></p></div>
-    <div class="contact-item"><h4>Response time</h4><p>Within 48 hours. Urgent matters — say so in your message.</p></div>
-    <div class="map-frame">
-      <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=A-62+First+Floor+Defence+Colony+New+Delhi+110024&output=embed"></iframe>
-    </div>
+<!-- MARQUEE -->
+<div class="marquee-outer">
+  <div class="marquee-track">
+    <span class="mi">Delhi High Court</span><span class="ms"></span><span class="mi">Supreme Court of India</span><span class="ms"></span><span class="mi">Copyright Enforcement</span><span class="ms"></span><span class="mi">AI Law</span><span class="ms"></span><span class="mi">Criminal Defence</span><span class="ms"></span><span class="mi">Real Estate Advisory</span><span class="ms"></span><span class="mi">Writs &amp; PILs</span><span class="ms"></span><span class="mi">NCLT &amp; NCLAT</span><span class="ms"></span><span class="mi">SLPs</span><span class="ms"></span><span class="mi">Consumer Protection</span><span class="ms"></span><span class="mi">Higher Standards</span><span class="ms"></span>
+    <span class="mi">Delhi High Court</span><span class="ms"></span><span class="mi">Supreme Court of India</span><span class="ms"></span><span class="mi">Copyright Enforcement</span><span class="ms"></span><span class="mi">AI Law</span><span class="ms"></span><span class="mi">Criminal Defence</span><span class="ms"></span><span class="mi">Real Estate Advisory</span><span class="ms"></span><span class="mi">Writs &amp; PILs</span><span class="ms"></span><span class="mi">NCLT &amp; NCLAT</span><span class="ms"></span><span class="mi">SLPs</span><span class="ms"></span><span class="mi">Consumer Protection</span><span class="ms"></span><span class="mi">Higher Standards</span><span class="ms"></span>
   </div>
-  <div class="form">
-    <div class="form-group"><label>Name</label><input type="text" placeholder="Full name"/></div>
-    <div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com"/></div>
-    <div class="form-group"><label>Matter type</label>
-      <select><option value="">Select area</option><option>Copyright / IP Enforcement</option><option>AI Law</option><option>Real Estate &amp; Property</option><option>Criminal Matter</option><option>Civil / Commercial Litigation</option><option>Consumer Protection</option></select>
-    </div>
-    <div class="form-group"><label>Message</label><textarea placeholder="Brief description of your matter. Everything shared here is treated as strictly confidential."></textarea></div>
-    <button class="btn-submit">Send enquiry</button>
-  </div>
-</section>
+</div>
 
-<footer>
-  <div class="footer-brand">
-    <svg width="34" height="17" viewBox="0 0 100 50">
-      <text x="0" y="40" font-size="44" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-weight="700" fill="#F5EEE2">N</text>
-      <text x="48" y="40" font-size="44" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-weight="700" fill="#A8512F">L</text>
-    </svg>
-    <span>Novarix Legal</span>
+<!-- PRACTICE -->
+<div class="sec-wrap">
+  <div class="sec" id="practice">
+    <div class="sec-header">
+      <div><p class="eyebrow">What we handle</p><h2 class="headline">Practice areas.</h2></div>
+      <a href="#contact" class="lnk">Discuss your matter</a>
+    </div>
+    <div class="practice-grid">
+      <div class="pc"><span class="pc-num">I.</span><h3>Copyright &amp; IP Enforcement</h3><p>Legal counsel to CINEFIL Producers Performance Limited — a registered copyright society under the Copyright Act, 1957. Enforcement across hospitality, healthcare, retail and broadcasting: demand notices, Delhi HC injunctions, commercial suits.</p><span class="tag-red">Active</span></div>
+      <div class="pc"><span class="pc-num">II.</span><h3>AI Law</h3><p>Advisory and litigation on deepfakes, AI-generated replicas, synthetic media and unauthorised digital impersonation. India's fastest-growing and least understood legal frontier — and we are already operating in it.</p><span class="tag-red">Emerging</span></div>
+      <div class="pc"><span class="pc-num">III.</span><h3>Real Estate &amp; Property Law</h3><p>Strategic counsel and alliance partner for Altera Realty's Delhi NCR expansion. Developer advisory, PropTech structuring, title due diligence, RERA disputes and property litigation.</p><span class="tag-red">Advisory</span></div>
+      <div class="pc"><span class="pc-num">IV.</span><h3>Criminal Law</h3><p>Bail, anticipatory bail, FIR quashing and full trial representation. Grounded in real working knowledge of how Delhi Police, district courts and the Sessions system actually operate.</p><span class="tag-red">Litigation</span></div>
+      <div class="pc"><span class="pc-num">V.</span><h3>Civil &amp; Commercial Litigation</h3><p>High Court litigation across injunctions, commercial disputes, recovery matters, DRT proceedings and appellate work — fast, precise, and built around results rather than prolonged process.</p><span class="tag-red">Litigation</span></div>
+      <div class="pc"><span class="pc-num">VI.</span><h3>Consumer Protection</h3><p>Legal notices and representation against manufacturers and service providers — product liability, service deficiency and unfair trade practices before District, State and National Commissions.</p><span class="tag-red">Advisory</span></div>
+    </div>
   </div>
-  <p>Founder - Mahi Sharma - office@novarixlegal.in</p>
-  <div class="footer-links"><a href="#about">About</a><a href="#practice">Practice</a><a href="#contact">Contact</a></div>
-</footer>
-<div class="footer-bar">
-  <span style="font-size:0.72rem;letter-spacing:0.05em;color:var(--terracotta-lt);opacity:0.7">&copy; 2024 NOVARIX LEGAL &middot; NEW DELHI &middot; A-62 DEFENCE COLONY</span>
+</div>
+
+<!-- KNOWLEDGE HUB -->
+<div class="sec-wrap alt">
+  <div class="sec" id="knowledge">
+    <div class="sec-header-stack">
+      <p class="eyebrow">Legal knowledge hub</p>
+      <h2 class="headline" style="margin-bottom:12px">Read. Understand. Act.</h2>
+      <p class="lead" style="max-width:560px">Articles, case commentary and reposts — with my plain-language advisory opinion on what each one means for you. Written for law students, first-time clients and seasoned advocates alike.</p>
+    </div>
+    <div class="hub-layout">
+      <div class="hub-stack">
+        <!-- Featured repost -->
+        <div class="art-hero">
+          <div class="art-banner">
+            <div class="art-banner-type">Repost</div>
+            <div class="art-banner-src">Bar &amp; Bench · September 2026</div>
+          </div>
+          <div class="art-body">
+            <div>
+              <div class="art-meta"><span class="art-cat">Copyright Law</span><span class="art-date">Sep 2026</span></div>
+              <h3>Delhi HC on Hotel Music Licensing: What the PPL Judgment Really Means</h3>
+              <p>The Delhi High Court ruled on the obligation of hotels to obtain licences from copyright societies before playing background music. This has direct implications for every hospitality business in the country.</p>
+              <div class="take"><div class="take-lbl">Mahi's Advisory Opinion</div><div class="take-text">This judgment matters beyond the big film studios. A small guesthouse playing a playlist is equally liable. The court is clear — ignorance of the licensing requirement is not a defence. If you run a business with background music, get your NOC now.</div></div>
+            </div>
+            <a href="https://barandbench.com" target="_blank" rel="noopener" class="lnk">Read original article</a>
+          </div>
+        </div>
+        <!-- 2-col row -->
+        <div class="art-row">
+          <div class="art-col">
+            <div class="art-meta" style="margin-bottom:10px"><span class="art-cat">Women's Rights</span><span class="art-date">Original</span></div>
+            <h3>Section 498A / BNS 85: What It Protects and What It Does Not</h3>
+            <p>One of the most used and most misunderstood provisions in Indian family law — a full breakdown for both sides of the matter.</p>
+            <div class="take" style="margin-bottom:12px"><div class="take-lbl">Mahi's Advisory Opinion</div><div class="take-text">The law is a tool. Like any tool, it can be used correctly or weaponised. My job is to make sure my client understands every angle before they walk into that courtroom.</div></div>
+            <a href="#" class="lnk">Read full article</a>
+          </div>
+          <div class="art-col">
+            <div class="art-meta" style="margin-bottom:10px"><span class="art-cat">AI &amp; Technology Law</span><span class="art-date">Repost · LiveLaw</span></div>
+            <h3>India's First Deepfake Case: What the Court Said and Why It Matters</h3>
+            <p>A Delhi court took cognisance of AI-generated video impersonation of a public figure — a preliminary but important precedent for AI content liability in India.</p>
+            <div class="take" style="margin-bottom:12px"><div class="take-lbl">Mahi's Advisory Opinion</div><div class="take-text">We have no dedicated deepfake law yet. What we have are creative applications of the IT Act, Copyright Act and defamation law. Courts are ready to act even without express statutory backing.</div></div>
+            <a href="https://livelaw.in" target="_blank" rel="noopener" class="lnk">Read original</a>
+          </div>
+        </div>
+      </div>
+      <!-- Sidebar -->
+      <div class="hub-side">
+        <div class="sbox">
+          <div class="sbox-title">Browse by topic</div>
+          <ul class="topic-list">
+            <li><a href="#">Women &amp; Family Law <span>8</span></a></li>
+            <li><a href="#">Criminal Law &amp; FIR <span>6</span></a></li>
+            <li><a href="#">Consumer Rights <span>5</span></a></li>
+            <li><a href="#">Property &amp; Real Estate <span>4</span></a></li>
+            <li><a href="#">Copyright &amp; IP <span>7</span></a></li>
+            <li><a href="#">AI &amp; Technology Law <span>3</span></a></li>
+            <li><a href="#">Writs &amp; PILs <span>4</span></a></li>
+            <li><a href="#">SLPs &amp; Supreme Court <span>3</span></a></li>
+            <li><a href="#">For Law Students <span>6</span></a></li>
+          </ul>
+        </div>
+        <div class="sbox">
+          <div class="sbox-title">Recent reposts</div>
+          <div class="rp-list">
+            <div class="rp-item"><div class="rp-src">Bar &amp; Bench · Repost</div><div class="rp-title">SC: Liberty cannot be made illusory through bail conditions</div><div class="rp-take">"This matters for every undertrial given bail on conditions they cannot practically meet."</div></div>
+            <div class="rp-item"><div class="rp-src">LiveLaw · Repost</div><div class="rp-title">RERA and the builder's obligation to disclose delays</div><div class="rp-take">"If your builder missed the possession date, this judgment is your starting point."</div></div>
+            <div class="rp-item"><div class="rp-src">Indian Express · Repost</div><div class="rp-title">What the new DV amendment changes for survivors</div><div class="rp-take">"Read the original. Then read my take. They are very different."</div></div>
+            <div class="rp-item"><div class="rp-src">The Hindu · Repost</div><div class="rp-title">Child custody after divorce: what courts now prioritise</div><div class="rp-take">"Welfare of the child is paramount. Here is what that actually means in practice."</div></div>
+          </div>
+        </div>
+        <div class="sbox sbox-cta">
+          <div class="sbox-title">Have a legal question?</div>
+          <div class="sbox-cta-body">
+            <p>Write to me directly. Not every query needs a full consultation — sometimes one clear answer is all you need.</p>
+            <a href="mailto:office@novarixlegal.in">Send your query</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCEDURES -->
+<div class="sec-wrap">
+  <div class="sec" id="procedures">
+    <div class="sec-header-stack">
+      <p class="eyebrow">Procedures library</p>
+      <h2 class="headline" style="margin-bottom:12px">How to navigate the law.</h2>
+      <p class="lead" style="max-width:560px">Step-by-step guides to common legal procedures — for law students, clients and anyone who needs to understand what actually happens inside the system. Click any card to expand.</p>
+    </div>
+    <div class="proc-grid">
+      <div class="proc" onclick="this.classList.toggle('open')">
+        <h3>How to file an FIR — and what to do if police refuse</h3>
+        <p>The First Information Report is the entry point for every criminal matter. Most people do not know their rights when they walk into a police station.</p>
+        <div class="proc-tags"><span class="proc-tag">Criminal</span><span class="proc-tag">Police</span><span class="proc-tag">BNSS 2023</span></div>
+        <div class="proc-toggle">Read the procedure</div>
+        <div class="proc-steps"><ol><li>Go to the police station in whose jurisdiction the offence occurred.</li><li>State your complaint orally or in writing — the SHO is bound to record it.</li><li>Under Section 173 BNSS, if police refuse, send your complaint by post to the Superintendent of Police.</li><li>If still refused, file a complaint before the Magistrate under Section 175 BNSS.</li><li>Once registered, you are entitled to a free copy of the FIR immediately.</li><li>Retain the FIR number — it is your reference for all future proceedings.</li></ol></div>
+      </div>
+      <div class="proc" onclick="this.classList.toggle('open')">
+        <h3>How to apply for anticipatory bail</h3>
+        <p>Section 482 BNSS (formerly S.438 CrPC) — one of the most powerful protections in criminal law. Here is exactly how to use it.</p>
+        <div class="proc-tags"><span class="proc-tag">Criminal</span><span class="proc-tag">Bail</span><span class="proc-tag">Sessions / HC</span></div>
+        <div class="proc-toggle">Read the procedure</div>
+        <div class="proc-steps"><ol><li>File an application before the Sessions Court or High Court anticipating arrest.</li><li>State the apprehension of arrest and reasons the accusation is false or exaggerated.</li><li>Attach relevant documents — FIR copy, previous bail orders, personal affidavit.</li><li>Court may issue an interim order directing that if arrested, the applicant shall be released on bail.</li><li>Notice is issued to the prosecution for their response.</li><li>Final hearing — court considers nature of accusation, antecedents and flight risk before deciding.</li></ol></div>
+      </div>
+      <div class="proc" onclick="this.classList.toggle('open')">
+        <h3>How to file a writ petition in the Delhi High Court</h3>
+        <p>Writs under Article 226 are the most direct way to challenge government action or inaction. This is how it works before the Delhi High Court.</p>
+        <div class="proc-tags"><span class="proc-tag">Constitutional</span><span class="proc-tag">Writ</span><span class="proc-tag">Delhi HC</span></div>
+        <div class="proc-toggle">Read the procedure</div>
+        <div class="proc-steps"><ol><li>Identify the nature of writ: Habeas Corpus, Mandamus, Certiorari, Prohibition, or Quo Warranto.</li><li>Draft the writ petition with a synopsis, list of dates and grounds. Attach all documents relied upon.</li><li>File at the filing counter of the Delhi High Court. A W.P. number is assigned.</li><li>On first hearing, the court may admit the matter and issue notice to the respondent.</li><li>Counter affidavit is filed by the respondent. Rejoinder by petitioner if needed.</li><li>Final arguments on maintainability and merits, followed by judgment.</li></ol></div>
+      </div>
+      <div class="proc" onclick="this.classList.toggle('open')">
+        <h3>How to file for divorce — all grounds and procedures</h3>
+        <p>Divorce under the Hindu Marriage Act, Special Marriage Act or personal laws — the procedure differs significantly. Here is the full map.</p>
+        <div class="proc-tags"><span class="proc-tag">Family Law</span><span class="proc-tag">Matrimonial</span><span class="proc-tag">HMA</span></div>
+        <div class="proc-toggle">Read the procedure</div>
+        <div class="proc-steps"><ol><li>Identify grounds: Mutual consent (S.13B HMA) or contested (cruelty, desertion, adultery under S.13).</li><li>For mutual consent: both parties file a joint petition. 6-month cooling-off period applies (may be waived).</li><li>For contested: file the petition in the Family Court where parties last resided together.</li><li>Serve notice on the respondent — they file a written statement in reply.</li><li>Mediation is typically attempted before trial begins.</li><li>If mediation fails — evidence, cross-examination, arguments, then decree.</li></ol></div>
+      </div>
+      <div class="proc" onclick="this.classList.toggle('open')">
+        <h3>How to file a consumer complaint</h3>
+        <p>The Consumer Protection Act, 2019 gives every buyer strong rights. Complaints can now be filed entirely online.</p>
+        <div class="proc-tags"><span class="proc-tag">Consumer</span><span class="proc-tag">NCDRC</span><span class="proc-tag">Online Filing</span></div>
+        <div class="proc-toggle">Read the procedure</div>
+        <div class="proc-steps"><ol><li>Send a legal notice to the company first — often resolves without further proceedings.</li><li>If unresolved, file at edaakhil.nic.in — India's online consumer complaint portal.</li><li>Jurisdiction by claim value: District (up to ₹50L), State (₹50L–₹2Cr), National (above ₹2Cr).</li><li>Upload complaint, ID proof, purchase documents and copy of notice sent.</li><li>Pay nominal filing fee. Notice is issued to the opposite party.</li><li>Arguments and evidence, followed by order — compensation, refund, or replacement.</li></ol></div>
+      </div>
+      <div class="proc" onclick="this.classList.toggle('open')">
+        <h3>How to file an SLP in the Supreme Court of India</h3>
+        <p>A Special Leave Petition under Article 136 — the route to the Supreme Court when the High Court has ruled against you.</p>
+        <div class="proc-tags"><span class="proc-tag">Supreme Court</span><span class="proc-tag">SLP</span><span class="proc-tag">Article 136</span></div>
+        <div class="proc-toggle">Read the procedure</div>
+        <div class="proc-steps"><ol><li>Obtain a certified copy of the impugned High Court judgment immediately.</li><li>File within 90 days (civil) or 60 days (criminal) of the HC judgment at the SC Registry.</li><li>Petition includes: synopsis, list of dates, grounds of challenge and prayer clause.</li><li>Listed before a two-judge Bench — they decide whether to grant leave to appeal.</li><li>If leave is granted: converted to Civil/Criminal Appeal and heard on full merits.</li><li>If refused: HC order stands. Review petition possible if error is apparent on record.</li></ol></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEOS -->
+<div class="sec-wrap dark">
+  <div class="sec" id="videos">
+    <div class="sec-header">
+      <div><p class="eyebrow-w">Watch &amp; learn</p><h2 class="headline-w">Legal education on video.</h2></div>
+      <a href="https://youtube.com" target="_blank" class="lnk-w">YouTube channel</a>
+    </div>
+    <div class="vid-grid">
+      <div class="vid">
+        <div class="vid-thumb"><iframe src="https://www.youtube.com/embed/videoseries?list=PLbpi6ZahtOH6Ar_3GPy3workHH7xvPSOP" allowfullscreen title="Criminal law explainer"></iframe></div>
+        <div class="vid-info"><span class="vid-tag">Criminal Law</span><h4>Your rights when the police knock on your door</h4><p>What you can and cannot be asked to do — BNSS 2023 explained in plain language.</p></div>
+      </div>
+      <div class="vid">
+        <div class="vid-thumb"><iframe src="https://www.youtube.com/embed/videoseries?list=PLbpi6ZahtOH6Ar_3GPy3workHH7xvPSOP" allowfullscreen title="Women's rights explainer"></iframe></div>
+        <div class="vid-info"><span class="vid-tag">Women's Rights</span><h4>Domestic Violence Act: what Section 12 actually gives you</h4><p>From filing the DV application to interim reliefs — the full picture in under 10 minutes.</p></div>
+      </div>
+      <div class="vid">
+        <div class="vid-thumb"><iframe src="https://www.youtube.com/embed/videoseries?list=PLbpi6ZahtOH6Ar_3GPy3workHH7xvPSOP" allowfullscreen title="Law student guide"></iframe></div>
+        <div class="vid-info"><span class="vid-tag">For Law Students</span><h4>How to read a Supreme Court judgment</h4><p>Ratio decidendi, obiter dicta, and what actually matters when you cite a case in court.</p></div>
+      </div>
+    </div>
+    <p style="margin-top:18px;font-size:10px;color:rgba(255,255,255,.18);text-align:center;letter-spacing:.06em;text-transform:uppercase">Replace placeholder video links with your actual YouTube URLs once your channel is live</p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="sec-wrap">
+  <div class="sec" id="about">
+    <p class="eyebrow">The firm</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <h2 class="headline" style="margin-bottom:32px">The lawyer.</h2>
+        <p>I am <strong>Mahi Sharma</strong> — a Delhi-based advocate whose practice doesn't sit in one box. <strong>Copyright. AI law. Real estate. Criminal. Civil.</strong> Built this way on purpose, because the clients who need help most rarely arrive with a problem that fits neatly into a single category.</p>
+        <p>That range comes from genuinely sitting inside each world — I read the judgments, but I also know the registrar who'll actually stamp the file, the inspector who'll actually visit the site, the desk where a notice quietly stalls if nobody follows up in person. Clients come back not because I know more law than the next advocate, but because I know how to move a matter through Delhi itself.</p>
+        <p>I serve as <strong>Legal Counsel to CINEFIL</strong> Producers Performance Limited, and as <strong>Strategic Advisor &amp; Alliance Partner to Altera Realty</strong> for their Delhi NCR expansion, alongside my litigation practice with <strong>Media-Lexicon</strong> in Defence Colony.</p>
+        <p>This knowledge hub exists because I believe the law should be readable — not just by advocates, but by the people it is supposed to protect. If one article here helps someone understand their rights before they pick up the phone, this site has done its job.</p>
+        <div class="pull-quote">
+          <blockquote>"The law I practise was written for people who couldn't afford silence. I'm here to make sure they don't have to."</blockquote>
+          <cite>Mahi Sharma · Advocate · Bar Council of Delhi · Enrolment No. D/4283/2024</cite>
+        </div>
+      </div>
+      <div class="about-panel">
+        <div class="a-stats">
+          <div class="ast"><div class="ast-n">DHC</div><div class="ast-l">Primary court</div></div>
+          <div class="ast"><div class="ast-n">6+</div><div class="ast-l">Practice areas</div></div>
+          <div class="ast"><div class="ast-n">NCR</div><div class="ast-l">Coverage</div></div>
+        </div>
+        <div class="aff"><h4>CINEFIL Producers Performance Limited</h4><p>Legal Counsel — Registered Copyright Society under the Copyright Act, 1957</p></div>
+        <div class="aff"><h4>Media-Lexicon, Defence Colony</h4><p>Litigation practice with Advocate Vishnu T. Menon — Delhi High Court</p></div>
+        <div class="aff"><h4>Altera Realty</h4><p>Strategic Advisor &amp; Alliance Partner, Delhi NCR — PropTech &amp; Real Estate</p></div>
+        <div class="aff"><h4>Delhi High Court Bar Association</h4><p>Member · Enrolled 2024</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="sec-wrap dark">
+  <div class="sec" id="contact">
+    <p class="eyebrow-w">Get in touch</p>
+    <h2 class="headline-w" style="margin-bottom:52px">Let's talk about your matter.</h2>
+    <div class="contact-grid">
+      <div>
+        <div class="cb"><h4>Office</h4><p>A-62, First Floor, Defence Colony,<br>New Delhi — 110024</p></div>
+        <div class="cb"><h4>Email</h4><a href="mailto:office@novarixlegal.in" class="cb">office@novarixlegal.in</a></div>
+        <div class="cb"><h4>Courts we appear in</h4><p>Supreme Court of India · Delhi High Court · NCLT / NCLAT · DRT · Family Courts · District Courts, Delhi NCR</p></div>
+        <div class="cb"><h4>Response time</h4><p>Within 48 hours. Urgent matters — say so in your message and we respond faster.</p></div>
+        <p class="c-note">No forms that go nowhere. Every enquiry is read personally — not filtered by a junior associate.</p>
+      </div>
+      <form class="cf">
+        <div class="fg"><label>Name</label><input type="text" placeholder="Your full name"></div>
+        <div class="fg"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+        <div class="fg"><label>Matter type</label>
+          <select>
+            <option value="" disabled selected>Select area</option>
+            <option>Copyright / IP Enforcement</option>
+            <option>AI Law</option>
+            <option>Real Estate &amp; Property</option>
+            <option>Criminal Matter</option>
+            <option>Civil / Commercial Litigation</option>
+            <option>Consumer Protection</option>
+            <option>Family / Matrimonial</option>
+            <option>Writ / PIL</option>
+            <option>Supreme Court SLP</option>
+            <option>General Legal Query</option>
+          </select>
+        </div>
+        <div class="fg"><label>Message</label><textarea placeholder="Brief description of your matter or question"></textarea></div>
+        <button type="submit" class="btn btn-red" style="align-self:flex-start">Send enquiry</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="ft-outer">
+  <div class="ft">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <div class="ft-logo-row">
+          <img src="logo.png" alt="Novarix Legal">
+          <div>
+            <span class="ft-wm-main">NOVARIX LEGAL</span>
+            <span class="ft-wm-sub">LAW FIRM</span>
+          </div>
+        </div>
+        <p class="ft-desc">A full-spectrum legal practice and knowledge hub in Defence Colony, New Delhi. Appearing before the Supreme Court, Delhi High Court, NCLT, DRT and district courts across Delhi NCR.</p>
+      </div>
+      <div class="ft-cols">
+        <div class="ft-col">
+          <h5>Practice</h5>
+          <ul>
+            <li><a href="#practice">Copyright &amp; IP</a></li>
+            <li><a href="#practice">AI Law</a></li>
+            <li><a href="#practice">Real Estate</a></li>
+            <li><a href="#practice">Criminal</a></li>
+            <li><a href="#practice">Civil &amp; Commercial</a></li>
+            <li><a href="#practice">Consumer</a></li>
+          </ul>
+        </div>
+        <div class="ft-col">
+          <h5>Knowledge</h5>
+          <ul>
+            <li><a href="#knowledge">Articles</a></li>
+            <li><a href="#knowledge">Reposts &amp; Commentary</a></li>
+            <li><a href="#procedures">Procedures Library</a></li>
+            <li><a href="#videos">Videos</a></li>
+          </ul>
+        </div>
+        <div class="ft-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="mailto:office@novarixlegal.in">office@novarixlegal.in</a></li>
+            <li><a href="#contact">Send a query</a></li>
+            <li><a href="#about">About the firm</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <p class="ft-copy">© 2026 Novarix Legal · New Delhi · D/4283/2024 · Higher Standards</p>
+      <p class="ft-disc">Content on this site is for informational purposes only and does not constitute legal advice. Reading this site does not create an advocate-client relationship. Contact us directly for advice on your specific matter.</p>
+    </div>
+  </div>
 </div>
 
 </body>
